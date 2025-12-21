@@ -3,11 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anshul Eskey | Product Manager & Analytics Strategist | IIT Roorkee</title>
+    <title>Anshul Eskey | Product Manager & Analytics | IIT Roorkee</title>
     <style>
-        /* ========================================
-           ROOT VARIABLES - CUSTOMIZE COLORS HERE
-           ======================================== */
         :root {
             --color-orange-primary: #F59F1C;
             --color-orange-light: #FFB84D;
@@ -51,9 +48,6 @@
             overflow-x: hidden;
         }
 
-        /* ========================================
-           FLOATING PARTICLE BACKGROUND
-           ======================================== */
         .particle-background {
             position: fixed;
             top: 0;
@@ -61,7 +55,7 @@
             right: 0;
             bottom: 0;
             pointer-events: none;
-            z-index: 0;
+            z-index: -1; /* Fixed: Moved behind content */
         }
 
         .particle {
@@ -107,20 +101,26 @@
             animation: float4 17s ease-in-out infinite;
         }
 
-        @keyframes float1 { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(30px, -40px) scale(1.1); } }
-        @keyframes float2 { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(-30px, 40px) scale(0.95); } }
-        @keyframes float3 { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(-20px, 30px) rotate(45deg); } }
-        @keyframes float4 { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(40px, -30px) rotate(-45deg); } }
-        @keyframes heroFadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes scrollBounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(10px); } }
-        @keyframes visualFloat { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-30px) rotate(5deg); } }
-        @keyframes shimmer { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(20px, 20px); } }
-        @keyframes contactFloat { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(50px, 50px); } }
-        @keyframes timelineIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes float1 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, -40px) scale(1.1); }
+        }
 
-        /* ========================================
-           NAVIGATION - FIXED HEADER
-           ======================================== */
+        @keyframes float2 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-30px, 40px) scale(0.95); }
+        }
+
+        @keyframes float3 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-20px, 30px) rotate(45deg); }
+        }
+
+        @keyframes float4 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(40px, -30px) rotate(-45deg); }
+        }
+
         nav {
             position: fixed;
             top: 0;
@@ -182,7 +182,10 @@
             transition: width var(--duration-fast);
         }
 
-        .nav-links a:hover::after, .nav-links a.active::after, .nav-links button:hover::after {
+        .nav-links a:hover::after,
+        .nav-links a.active::after,
+        .nav-links button:hover::after,
+        .nav-links button.active::after {
             width: 100%;
         }
 
@@ -192,7 +195,7 @@
 
         .cta-button {
             background: linear-gradient(135deg, var(--color-teal), var(--color-teal-dark));
-            color: white;
+            color: rgb(0, 0, 0) !important; /* Force white text */
             padding: 0.5rem 1.25rem;
             border-radius: var(--radius-md);
             border: none;
@@ -202,15 +205,18 @@
             transition: all var(--duration-normal);
             box-shadow: 0 4px 15px rgba(46, 196, 182, 0.2);
         }
+        
+        /* Fix for CTA button underline override */
+        .cta-button::after {
+            display: none; 
+        }
 
         .cta-button:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(46, 196, 182, 0.35);
+            color: rgb(177, 182, 31) !important;
         }
 
-        /* ========================================
-           HERO SECTION
-           ======================================== */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -269,7 +275,8 @@
             flex-wrap: wrap;
         }
 
-        .btn-primary, .btn-secondary {
+        .btn-primary,
+        .btn-secondary {
             padding: var(--spacing-md) var(--spacing-lg);
             border-radius: var(--radius-md);
             font-size: 1rem;
@@ -314,9 +321,22 @@
             font-size: 1.5rem;
         }
 
-        /* ========================================
-           SECTIONS & LAYOUT
-           ======================================== */
+        @keyframes heroFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
         section {
             padding: var(--spacing-2xl) var(--spacing-lg);
             max-width: 1200px;
@@ -340,9 +360,6 @@
             background-clip: text;
         }
 
-        /* ========================================
-           ABOUT SECTION
-           ======================================== */
         .about-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -440,9 +457,11 @@
             position: relative;
         }
 
-        /* ========================================
-           STATS SECTION
-           ======================================== */
+        @keyframes visualFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(5deg); }
+        }
+
         .stats-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -499,9 +518,6 @@
             font-weight: 600;
         }
 
-        /* ========================================
-           PROJECTS GRID
-           ======================================== */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -565,6 +581,11 @@
             animation: shimmer 3s ease-in-out infinite;
         }
 
+        @keyframes shimmer {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(20px, 20px); }
+        }
+
         .project-content {
             padding: var(--spacing-lg);
         }
@@ -614,9 +635,6 @@
             font-weight: 600;
         }
 
-        /* ========================================
-           TIMELINE/EXPERIENCE
-           ======================================== */
         .experience-timeline {
             position: relative;
             padding: var(--spacing-lg) 0;
@@ -644,6 +662,17 @@
         .experience-item:nth-child(1) { animation-delay: 0.1s; }
         .experience-item:nth-child(2) { animation-delay: 0.2s; }
         .experience-item:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes timelineIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
         .experience-item:nth-child(odd) {
             text-align: right;
@@ -716,9 +745,81 @@
             font-size: 0.95rem;
         }
 
-        /* ========================================
-           BLOG SECTION
-           ======================================== */
+        .contact-section {
+            text-align: center;
+            background: linear-gradient(135deg, var(--color-orange-primary), var(--color-yellow), var(--color-mint), var(--color-teal));
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-2xl);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+            animation: contactFloat 8s ease-in-out infinite;
+        }
+
+        @keyframes contactFloat {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(50px, 50px); }
+        }
+
+        .contact-section h2 {
+            font-size: 2rem;
+            margin-bottom: var(--spacing-lg);
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-section p {
+            font-size: 1.05rem;
+            margin-bottom: var(--spacing-lg);
+            position: relative;
+            z-index: 1;
+            opacity: 0.95;
+        }
+
+        .contact-methods {
+            display: flex;
+            gap: var(--spacing-lg);
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: var(--spacing-lg);
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-md) var(--spacing-lg);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            text-decoration: none;
+            color: white;
+            transition: all var(--duration-normal);
+        }
+
+        .contact-method:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-method span {
+            font-size: 1.5rem;
+        }
+
         .blog-filter {
             display: flex;
             gap: var(--spacing-md);
@@ -739,7 +840,8 @@
             transition: all var(--duration-normal);
         }
 
-        .filter-btn:hover, .filter-btn.active {
+        .filter-btn:hover,
+        .filter-btn.active {
             background: var(--color-orange-primary);
             color: white;
         }
@@ -842,7 +944,6 @@
             font-size: 0.95rem;
             transition: all var(--duration-fast);
             display: inline-block;
-            cursor: pointer;
         }
 
         .blog-read-more:hover {
@@ -854,82 +955,6 @@
             display: none;
         }
 
-        /* ========================================
-           CONTACT SECTION
-           ======================================== */
-        .contact-section {
-            text-align: center;
-            background: linear-gradient(135deg, var(--color-orange-primary), var(--color-yellow), var(--color-mint), var(--color-teal));
-            border-radius: var(--radius-lg);
-            padding: var(--spacing-2xl);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
-            animation: contactFloat 8s ease-in-out infinite;
-        }
-
-        .contact-section h2 {
-            font-size: 2rem;
-            margin-bottom: var(--spacing-lg);
-            position: relative;
-            z-index: 1;
-        }
-
-        .contact-section p {
-            font-size: 1.05rem;
-            margin-bottom: var(--spacing-lg);
-            position: relative;
-            z-index: 1;
-            opacity: 0.95;
-        }
-
-        .contact-methods {
-            display: flex;
-            gap: var(--spacing-lg);
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: var(--spacing-lg);
-            position: relative;
-            z-index: 1;
-        }
-
-        .contact-method {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-sm);
-            padding: var(--spacing-md) var(--spacing-lg);
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border-radius: var(--radius-md);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            text-decoration: none;
-            color: white;
-            transition: all var(--duration-normal);
-        }
-
-        .contact-method:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: translateY(-4px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .contact-method span {
-            font-size: 1.5rem;
-        }
-
-        /* ========================================
-           FOOTER
-           ======================================== */
         footer {
             background: linear-gradient(135deg, var(--color-text-dark), #2a2a2a);
             padding: var(--spacing-xl) var(--spacing-lg);
@@ -983,9 +1008,6 @@
             margin: var(--spacing-lg) 0;
         }
 
-        /* ========================================
-           ANIMATIONS & UTILITIES
-           ======================================== */
         .fade-in-on-scroll {
             opacity: 0;
             transform: translateY(30px);
@@ -1074,130 +1096,152 @@
             text-align: justify;
         }
 
-        /* ========================================
-           RESPONSIVE DESIGN
-           ======================================== */
         @media (max-width: 768px) {
-            nav { padding: var(--spacing-sm) var(--spacing-md); }
-            .nav-links { gap: var(--spacing-md); font-size: 0.85rem; }
-            .cta-button { display: none; }
-            .hero { margin-top: 70px; padding: var(--spacing-lg); }
-            .hero-content h1 { font-size: 2rem; }
-            .hero-content p { font-size: 1rem; }
-            .hero-actions { flex-direction: column; align-items: stretch; }
-            .btn-primary, .btn-secondary { width: 100%; text-align: center; }
-            .about-container { grid-template-columns: 1fr; gap: var(--spacing-lg); }
-            .visual-box { width: 250px; height: 250px; }
-            .experience-timeline::before { left: 15px; }
-            .experience-item:nth-child(odd), .experience-item:nth-child(even) { text-align: left; padding-left: 50px; padding-right: 0; }
-            .experience-dot { left: 0; }
-            .skills-grid { grid-template-columns: 1fr; }
-            .projects-grid { grid-template-columns: 1fr; }
-            .section-title { font-size: 1.75rem; }
-            section { padding: var(--spacing-xl) var(--spacing-md); }
-            .contact-methods { flex-direction: column; align-items: stretch; }
-            .contact-method { justify-content: center; }
-            .particle { display: none; }
-            .page-hero h1 { font-size: 2rem; }
+            nav {
+                padding: var(--spacing-sm) var(--spacing-md);
+            }
+
+            .nav-links {
+                gap: var(--spacing-md);
+                font-size: 0.85rem;
+            }
+
+            .cta-button {
+                display: none;
+            }
+
+            .hero {
+                margin-top: 70px;
+                padding: var(--spacing-lg);
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                text-align: center;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-lg);
+            }
+
+            .visual-box {
+                width: 250px;
+                height: 250px;
+            }
+
+            .experience-timeline::before {
+                left: 15px;
+            }
+
+            .experience-item:nth-child(odd),
+            .experience-item:nth-child(even) {
+                text-align: left;
+                padding-left: 50px;
+                padding-right: 0;
+            }
+
+            .experience-dot {
+                left: 0;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            section {
+                padding: var(--spacing-xl) var(--spacing-md);
+            }
+
+            .contact-methods {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .contact-method {
+                justify-content: center;
+            }
+
+            .particle {
+                display: none;
+            }
+
+            .page-hero h1 {
+                font-size: 2rem;
+            }
         }
 
         @media (max-width: 480px) {
-            .nav-links { gap: var(--spacing-sm); }
-            .nav-links a, .nav-links button { font-size: 0.8rem; }
-            .hero-content h1 { font-size: 1.5rem; }
-            .hero-content p { font-size: 0.95rem; }
-            .btn-primary, .btn-secondary { padding: var(--spacing-sm) var(--spacing-md); font-size: 0.9rem; }
-            .stats-container { grid-template-columns: repeat(2, 1fr); gap: var(--spacing-md); }
-            .stat-number { font-size: 1.75rem; }
-            .section-title { font-size: 1.5rem; }
-            .experience-item:nth-child(odd), .experience-item:nth-child(even) { padding-left: 40px; }
+            .nav-links {
+                gap: var(--spacing-sm);
+            }
+
+            .nav-links a, .nav-links button {
+                font-size: 0.8rem;
+            }
+
+            .hero-content h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero-content p {
+                font-size: 0.95rem;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                padding: var(--spacing-sm) var(--spacing-md);
+                font-size: 0.9rem;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--spacing-md);
+            }
+
+            .stat-number {
+                font-size: 1.75rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .experience-item:nth-child(odd),
+            .experience-item:nth-child(even) {
+                padding-left: 40px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Main app container - where all pages render -->
     <div id="app"></div>
 
     <script>
-        /* ========================================
-           BLOG POSTS DATA
-           
-           HOW TO ADD NEW BLOG POSTS:
-           1. Copy one of the objects below
-           2. Change: id (unique slug), title, date, category, readTime
-           3. Add excerpt (short preview text)
-           4. Add content (HTML string with your blog post)
-           5. Make sure category matches one of: learning, product, personal, analysis
-           
-           EXAMPLE:
-           {
-               id: 'my-new-post',
-               title: 'My New Blog Post Title',
-               date: 'Dec 25, 2025',
-               category: 'learning',
-               readTime: 8,
-               excerpt: 'Short summary of your post...',
-               content: `<h2>Main Section</h2><p>Your content here...</p>`
-           }
-           ======================================== */
-        const blogPosts = [
-            {
-                id: 'structured-reading',
-                title: 'The Art of Structured Reading: Building a Personal Knowledge System',
-                date: 'Dec 21, 2025',
-                category: 'learning',
-                readTime: 8,
-                excerpt: 'How to read research papers and books intentionally. A framework for extracting signal from noise.',
-                content: `<h2>Why Most Reading Fails</h2>
-<p>We live in an age of infinite information but finite attention. Most people read passively, absorbing text without processing it.</p>
-<p>Structured reading is different. It's an active process where you extract signal from noise, organize information intentionally, and build a compounding knowledge base.</p>
-<h2>The Three-Layer Framework</h2>
-<h3>Layer 1: Pre-Reading</h3>
-<p>Ask: Why am I reading this? What do I want? This sets clear intentions.</p>
-<h3>Layer 2: Active Reading</h3>
-<p>Highlight, annotate, and question as you read. Dialogue with the text.</p>
-<h3>Layer 3: Synthesis</h3>
-<p>Write a one-paragraph summary. This forces processing and internalization.</p>`
-            },
-            {
-                id: 'analytics-dashboards',
-                title: 'Why Most Analytics Dashboards Fail: A Framework for Clarity',
-                date: 'Dec 18, 2025',
-                category: 'product',
-                readTime: 12,
-                excerpt: 'Dashboards should drive clarity. Yet most are designed for vanity.',
-                content: `<h2>The Dashboard Paradox</h2>
-<p>Every company has a dashboard. Yet most are useless because they're optimized for looking impressive rather than driving clarity.</p>
-<h2>Common Failures</h2>
-<h3>Too Much Data</h3>
-<p>The human brain processes 3-5 pieces of information at once. Beyond that is noise.</p>
-<h3>Metrics Without Context</h3>
-<p>A metric up 20% is meaningless without targets and benchmarks.</p>
-<h3>No Action Layer</h3>
-<p>Show what happened AND what to do about it.</p>`
-            },
-            {
-                id: 'discipline-freedom',
-                title: 'Discipline as Freedom: What Competitive Weightlifting Taught Me',
-                date: 'Dec 15, 2025',
-                category: 'personal',
-                readTime: 10,
-                excerpt: 'Discipline creates freedom by eliminating decision fatigue.',
-                content: `<h2>The Paradox of Constraints</h2>
-<p>Most think discipline is restriction. The opposite is true. Discipline creates freedom by eliminating decision fatigue.</p>
-<h2>Preparation Removes Fear</h2>
-<p>Consistency ensures when the moment comes, there's no decision to make.</p>
-<h2>Systems Over Motivation</h2>
-<p>One day won't change you. But 100 days will. Trust the process.</p>`
-            }
-        ];
-
-        /* ========================================
-           PAGE CONSTANTS & STATE
-           
-           currentPage: tracks which page user is on
-           currentBlogPost: tracks which blog post is open
-           ======================================== */
+        // Simple single-page app routing without external libraries
+        const app = document.getElementById('app');
         const pages = {
             home: 'home',
             projects: 'projects',
@@ -1209,30 +1253,114 @@
         let currentPage = pages.home;
         let currentBlogPost = null;
 
-        /* ========================================
-           NAVIGATION FUNCTION
-           
-           Call this when user clicks a nav link
-           ======================================== */
-        function navigateTo(page) {
-            currentPage = page;
-            currentBlogPost = null;
-            renderApp();
-            window.scrollTo(0, 0);
-        }
+        // Global observer to avoid re-instantiation on every render
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -100px 0px'
+        };
 
-        function navigateToBlogPost(postId) {
-            currentPage = pages.blogPost;
-            currentBlogPost = postId;
-            renderApp();
-            window.scrollTo(0, 0);
-        }
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
 
-        /* ========================================
-           HEADER/NAVIGATION RENDER
-           
-           This renders the same header on every page
-           ======================================== */
+
+        const blogPosts = [
+            {
+                id: 'structured-reading',
+                title: 'The Art of Structured Reading: Building a Personal Knowledge System',
+                date: 'Dec 21, 2025',
+                category: 'learning',
+                readTime: 8,
+                excerpt: 'How to read research papers and books intentionally. A framework for extracting signal from noise, building a compounding knowledge base, and thinking clearly about complex topics.',
+                content: `<h2>Why Most Reading Fails</h2>
+<p>We live in an age of infinite information but finite attention. Most people read passively, absorbing text without processing it. The result? Information enters your mind and exits just as quickly, leaving no trace.</p>
+<p>Structured reading is different. It's an active process where you extract signal from noise, organize information intentionally, and build a compounding knowledge base over time.</p>
+
+<h2>The Three-Layer Reading Framework</h2>
+<h3>Layer 1: Pre-Reading</h3>
+<p>Before you read a single sentence, ask: Why am I reading this? What do I want to get from it? What's the author's main argument? This layer prevents passive consumption and sets clear intentions.</p>
+
+<h3>Layer 2: Active Reading</h3>
+<p>Highlight, annotate, and question as you read. Don't just consume—dialogue with the text. What do you agree with? What's missing? How does this connect to what you already know?</p>
+
+<h3>Layer 3: Post-Reading Synthesis</h3>
+<p>After finishing, write a one-paragraph summary in your own words. This forces you to process and internalize the material. Add it to your personal knowledge system for future reference.</p>
+
+<h2>Building Your Knowledge System</h2>
+<p>A knowledge system is your personal database of insights, organized in a way that makes them accessible and connectable. It could be digital notes, a spreadsheet, or a physical notebook—the format matters less than the discipline.</p>
+<p>The key is consistency: Review your notes regularly. Connect ideas across domains. Let patterns emerge. This is how depth compounds.</p>`
+            },
+            {
+                id: 'analytics-dashboards',
+                title: 'Why Most Analytics Dashboards Fail: A Framework for Clarity',
+                date: 'Dec 18, 2025',
+                category: 'product',
+                readTime: 12,
+                excerpt: 'Dashboards are tools for clarity. Yet most are designed for vanity. This essay explores why well-intentioned analytics projects collapse.',
+                content: `<h2>The Dashboard Paradox</h2>
+<p>Dashboards are everywhere. Every company has one. Yet most are useless. Why? Because they're optimized for the wrong thing: looking impressive rather than driving clarity.</p>
+<p>A dashboard should answer one simple question: What should I do next? If it doesn't, it's visual noise.</p>
+
+<h2>Common Failure Patterns</h2>
+<h3>Too Much Data</h3>
+<p>The most common mistake: cramming every possible metric onto a single dashboard. This creates cognitive overload. The human brain can process about 3-5 pieces of information at once. Beyond that, it's just noise.</p>
+
+<h3>Metrics Without Context</h3>
+<p>Numbers are meaningless without context. A metric that increased by 20% sounds good—but compared to what? What was the target? What does it actually mean for the business?</p>
+
+<h3>No Action Layer</h3>
+<p>The worst dashboards show data but don't prescribe action. A good dashboard answers not just "What happened?" but "What should we do about it?"</p>
+
+<h2>The Framework</h2>
+<p>Start with the question you're trying to answer. Build backwards from decision. Include only metrics that directly inform that decision. Add context (targets, benchmarks, trends). Include recommended actions.</p>
+<p>Simple, clear, actionable. Everything else is decoration.</p>`
+            },
+            {
+                id: 'discipline-freedom',
+                title: 'Discipline as Freedom: What I\'ve Learned from Competitive Weightlifting',
+                date: 'Dec 15, 2025',
+                category: 'personal',
+                readTime: 10,
+                excerpt: 'Discipline is not restriction—it\'s the foundation of freedom. After competing at Inter-IIT level, I\'ve learned that constraints force clarity.',
+                content: `<h2>The Paradox of Constraints</h2>
+<p>Most people think discipline is restriction. Less freedom. More rules. But the opposite is true. Discipline creates freedom by eliminating decision fatigue and creating space for what actually matters.</p>
+<p>In weightlifting, constraints are everywhere: programming, nutrition, sleep, training times. And somehow, these constraints create more freedom—freedom to improve, to compete, to achieve.</p>
+
+<h2>What Competition Teaches</h2>
+<p>Standing on a platform with 200 people watching, you realize something profound: preparation removes fear. Discipline isn't about willpower in the moment. It's about making the right decisions so consistently that when the moment comes, there's no decision to make.</p>
+<p>This applies everywhere. In work. In learning. In life.</p>
+
+<h2>Discipline as a System</h2>
+<p>The most underrated aspect of discipline: it's not about motivation. It's about systems. Small habits, compounded over time, create transformation.</p>
+<p>One session won't make you strong. But 100 sessions will. One day of good nutrition won't make you lean. But 300 days will. This is the real power of discipline—the ability to trust the process even when you can't see immediate results.</p>`
+            },
+            {
+                id: 'consulting-mindset',
+                title: 'The Consulting Mindset: Breaking Down Complex Problems into Actionable Insights',
+                date: 'Dec 12, 2025',
+                category: 'analysis',
+                readTime: 11,
+                excerpt: 'How consultants think about problems differently. A breakdown of structured problem-solving frameworks.',
+                content: `<h2>The Consultant\'s Lens</h2>
+<p>Consultants don't solve problems. They help clients see problems differently. The shift from "What should we do?" to "What does the situation demand?" changes everything.</p>
+
+<h2>The MECE Framework</h2>
+<p>MECE stands for Mutually Exclusive, Collectively Exhaustive. It's a way of breaking down a problem so that every piece is distinct and together they cover the whole landscape with no gaps.</p>
+<p>Instead of asking "How do we grow?" ask "Can we grow through new customers, more sales to existing customers, higher prices, or new products?" This exhausts the options. Nothing is missed. And each can be analyzed independently.</p>
+
+<h2>Hypothesis-Driven Analysis</h2>
+<p>The best consultants start with a hypothesis, not an analysis. They say "I think the problem is X. Let me test it." This is faster and more focused than collecting all data first.</p>
+<p>Make a hypothesis. Identify the critical data that would prove or disprove it. Gather that specific data. Make a recommendation.</p>
+
+<h2>Communication is Everything</h2>
+<p>Insight without communication is worthless. The clearest thinkers are often great communicators. One-page summaries. Clear supporting evidence. Recommended next steps. Simple narratives.</p>`
+            }
+        ];
+
         function renderHeader() {
             return `
                 <div class="particle-background">
@@ -1245,48 +1373,39 @@
                     <div class="nav-container">
                         <a class="nav-logo" onclick="navigateTo('${pages.home}')">Anshul Eskey</a>
                         <ul class="nav-links">
-                            <li><a onclick="navigateTo('${pages.home}')" class="nav-link ${currentPage === pages.home ? 'active' : ''}">Home</a></li>
-                            <li><a onclick="navigateTo('${pages.projects}')" class="nav-link ${currentPage === pages.projects ? 'active' : ''}">Projects</a></li>
-                            <li><a onclick="navigateTo('${pages.blog}')" class="nav-link ${currentPage === pages.blog ? 'active' : ''}">Blog</a></li>
-                            <li><a onclick="navigateTo('${pages.contact}')" class="nav-link ${currentPage === pages.contact ? 'active' : ''}">Contact</a></li>
-                            <li><button class="cta-button">Resume</button></li>
+                            <li><button onclick="navigateTo('${pages.home}')" class="nav-link ${currentPage === pages.home ? 'active' : ''}">Home</button></li>
+                            <li><button onclick="navigateTo('${pages.projects}')" class="nav-link ${currentPage === pages.projects ? 'active' : ''}">Projects</button></li>
+                            <li><button onclick="navigateTo('${pages.blog}')" class="nav-link ${currentPage === pages.blog ? 'active' : ''}">Blog</button></li>
+                            <li><button onclick="navigateTo('${pages.contact}')" class="nav-link ${currentPage === pages.contact ? 'active' : ''}">Contact</button></li>
+                            <li><a href="Final Resume AE.pdf" download="Final Resume AE.pdf" class="cta-button2">Resume</a></li>
                         </ul>
                     </div>
                 </nav>
             `;
         }
 
-        /* ========================================
-           FOOTER RENDER
-           
-           This renders the same footer on every page
-           ======================================== */
         function renderFooter() {
             return `
                 <footer>
                     <div class="footer-content">
                         <ul class="social-links">
-                            <li><a href="https://linkedin.com/in/anshul-eskey" title="LinkedIn">in</a></li>
-                            <li><a href="https://github.com" title="GitHub">⚙️</a></li>
+                            <li><a href="https://www.linkedin.com/in/anshul-eskey-ba0821292" title="LinkedIn">in</a></li>
+                            <li><a href="https://github.com/AnshulEsk1488" title="GitHub">⚙️</a></li>
                             <li><a href="https://twitter.com" title="Twitter">𝕏</a></li>
-                            <li><a href="mailto:anshul.eskey@gmail.com" title="Email">@</a></li>
+                            <li><a href="mailto:anshuleskey999@gmail.com" title="Email">@</a></li>
                         </ul>
                         <div class="footer-divider"></div>
-                        <p class="footer-text">&copy; 2025 Anshul Eskey | IIT Roorkee | Building clarity through strategy and analytics</p>
+                        <p class="footer-text">&copy; 2025 Anshul Eskey | Chemical Engineering Student at IIT Roorkee | Building clarity, depth, and precision</p>
                     </div>
                 </footer>
             `;
         }
 
-        /* ========================================
-           HOME PAGE
-           ======================================== */
         function renderHome() {
             return `
                 ${renderHeader()}
                 <div class="page-container">
                     <div class="page-content">
-                        <!-- HERO SECTION -->
                         <section class="hero" id="home">
                             <div class="hero-content">
                                 <h1>Product Manager & <span class="hero-highlight">Analytics Strategist</span></h1>
@@ -1294,32 +1413,32 @@
                                 <p class="hero-subtext">Building clarity through strategy, depth through learning, and value through precision</p>
                                 <div class="hero-actions">
                                     <button class="btn-primary" onclick="navigateTo('${pages.contact}')">Let's Connect</button>
-                                    <button class="btn-secondary" onclick="alert('Resume PDF would download here')">Download Resume</button>
+                                    <a href="Final Resume AE.pdf" download="Final Resume AE.pdf" class="btn-secondary">Download Resume</a>
                                 </div>
                             </div>
                             <div class="scroll-indicator">↓</div>
                         </section>
 
-                        <!-- ABOUT SECTION -->
                         <section id="about" class="fade-in-on-scroll">
                             <h2 class="section-title">About <span>Me</span></h2>
                             <div class="about-container">
                                 <div class="about-text">
-                                    <h3>Aspiring Product Manager & Analytics Strategist</h3>
-                                    <p>I'm a <span class="highlight-text">Chemical Engineering student at IIT Roorkee</span> with a passion for <span class="highlight-text">structured thinking, analytics, and product management</span>.</p>
-                                    <p>My philosophy: <em>Clarity over noise; depth over virality; serious but human tone.</em></p>
+                                    <h3>Aspiring Product Manager & Analytics Strategist at IIT Roorkee</h3>
+                                    <p>I'm a <span class="highlight-text">Chemical Engineering student</span> with a strong inclination toward <span class="highlight-text">structured thinking, analytics, and product management</span>. My approach combines technical rigor with strategic clarity.</p>
+                                    <p>Rather than chasing virality, I focus on <span class="highlight-text">depth over noise, consistency over burnout, and learning in public</span>. My website serves as an intellectual archive of my journey.</p>
+                                    <p>My core philosophy: <em>"Clarity over noise; depth over virality; serious but human tone; professional without being corporate."</em></p>
                                     <div class="skills-grid">
                                         <div class="skill-card">
                                             <h4>📊 Analytics</h4>
-                                            <p>Data interpretation, user behavior analysis</p>
+                                            <p>Data interpretation, user behavior analysis, BI</p>
                                         </div>
                                         <div class="skill-card">
                                             <h4>🎯 Product Strategy</h4>
-                                            <p>GTM planning, market research, roadmap</p>
+                                            <p>GTM planning, market research, roadmap design</p>
                                         </div>
                                         <div class="skill-card">
                                             <h4>💡 Systems Thinking</h4>
-                                            <p>Problem-solving, structured reasoning</p>
+                                            <p>Problem-solving, collaboration, reasoning</p>
                                         </div>
                                         <div class="skill-card">
                                             <h4>🔧 Technical Skills</h4>
@@ -1332,7 +1451,6 @@
                                 </div>
                             </div>
 
-                            <!-- STATS SECTION -->
                             <div class="stats-container">
                                 <div class="stat-box fade-in-on-scroll">
                                     <div class="stat-number">5+</div>
@@ -1353,61 +1471,77 @@
                             </div>
                         </section>
 
-                        <!-- PROJECTS SECTION (HOME PREVIEW) -->
                         <section id="projects" class="fade-in-on-scroll">
                             <h2 class="section-title">Featured <span>Projects</span></h2>
                             <div class="projects-grid">
-                                <div class="project-card fade-in-on-scroll">
+                                <div class="project-card fade-in-on-scroll" onclick="navigateTo('${pages.projects}')">
                                     <div class="project-image">📱</div>
                                     <div class="project-content">
                                         <h3>E-Commerce Analytics Framework</h3>
                                         <div class="project-meta">
                                             <span class="project-tag">Analytics</span>
                                             <span class="project-tag">SQL</span>
+                                            <span class="project-tag">BI</span>
                                         </div>
-                                        <p class="project-description">Designed comprehensive analytics framework for e-commerce platform. Identified user patterns and optimized conversion funnel.</p>
-                                        <div class="project-impact"><strong>📈 Result:</strong> 32% increase in user retention</div>
+                                        <p class="project-description">Designed comprehensive analytics framework for e-commerce platform. Identified user behavior patterns and optimized conversion funnel through data-driven insights.</p>
+                                        <div class="project-impact">
+                                            <strong>📈 Result:</strong> 32% increase in user retention
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="project-card fade-in-on-scroll">
+                                <div class="project-card fade-in-on-scroll" onclick="navigateTo('${pages.projects}')">
                                     <div class="project-image">🎯</div>
                                     <div class="project-content">
                                         <h3>B2B SaaS Positioning Strategy</h3>
                                         <div class="project-meta">
                                             <span class="project-tag">Strategy</span>
+                                            <span class="project-tag">Market Research</span>
                                             <span class="project-tag">GTM</span>
                                         </div>
-                                        <p class="project-description">Conducted market research and competitive analysis. Developed go-to-market strategy with positioning and messaging.</p>
-                                        <div class="project-impact"><strong>💰 Result:</strong> $2.5M ARR projection</div>
+                                        <p class="project-description">Conducted competitive analysis and market research to develop comprehensive go-to-market strategy. Defined positioning, messaging, and target segments.</p>
+                                        <div class="project-impact">
+                                            <strong>💰 Result:</strong> $2.5M ARR projection
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="project-card fade-in-on-scroll">
+                                <div class="project-card fade-in-on-scroll" onclick="navigateTo('${pages.projects}')">
                                     <div class="project-image">🔍</div>
                                     <div class="project-content">
-                                        <h3>Consumer Behavior Research</h3>
+                                        <h3>Consumer Behavior Research Study</h3>
                                         <div class="project-meta">
                                             <span class="project-tag">Research</span>
                                             <span class="project-tag">UX</span>
+                                            <span class="project-tag">Insights</span>
                                         </div>
-                                        <p class="project-description">Led qualitative and quantitative user research. Generated actionable product insights through interviews and surveys.</p>
-                                        <div class="project-impact"><strong>✅ Result:</strong> 15+ validated hypotheses</div>
+                                        <p class="project-description">Led qualitative and quantitative user research to understand pain points. Generated actionable product insights through interviews, surveys, and analysis.</p>
+                                        <div class="project-impact">
+                                            <strong>✅ Result:</strong> 15+ validated hypotheses
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </section>
 
-                        <!-- EXPERIENCE SECTION -->
                         <section id="experience" class="fade-in-on-scroll">
                             <h2 class="section-title">Experience & <span>Journey</span></h2>
                             <div class="experience-timeline">
                                 <div class="experience-item">
                                     <div class="experience-dot"></div>
                                     <div class="experience-content">
-                                        <h3>Research & Analytics Lead</h3>
+                                        <h3>Manager</h3>
                                         <div class="meta">Current | Career Development Cell, IIT Roorkee</div>
-                                        <p>Managing Research and Analytics vertical. Driving structured analysis and data-driven initiatives.</p>
+                                        <p>Managing the Research and Analytics vertical within Career Development Cell. Driving structured analysis, problem-solving frameworks, and data-driven initiatives.</p>
+                                    </div>
+                                </div>
+
+                                <div class="experience-item">
+                                    <div class="experience-dot"></div>
+                                    <div class="experience-content">
+                                        <h3>Department Representative</h3>
+                                        <div class="meta">Current | Career Development Cell, IIT Roorkee</div>
+                                        <p>Connecting Career Development Cell with the Chemical Engineering Department, allowing seemless flow of information, feedbacks and insights both ways.</p>
                                     </div>
                                 </div>
 
@@ -1416,25 +1550,24 @@
                                     <div class="experience-content">
                                         <h3>Active Projects Portfolio</h3>
                                         <div class="meta">Ongoing | Multiple Initiatives</div>
-                                        <p>CRD Project, Consulting & Analytics, Data Analytics Dashboards with Tableau.</p>
+                                        <p><strong>CRD Project:</strong> Focused on structured analysis and applied problem-solving.<br> <strong>Consulting & Analytics:</strong> Associated with IIT Guwahati's consulting club. <br><strong>Data Analytics:</strong> Building Tableau and analytics dashboards.</p>
                                     </div>
                                 </div>
 
                                 <div class="experience-item">
                                     <div class="experience-dot"></div>
                                     <div class="experience-content">
-                                        <h3>Competitive Weightlifter</h3>
-                                        <div class="meta">2024 - Present | IIT Roorkee Weightlifting Team</div>
-                                        <p>Medals at IT BHU and IIT Ropar. Demonstrates discipline, consistency, competitive mindset.</p>
+                                        <h3>Competitive Athlete & Discipline Builder</h3>
+                                        <div class="meta">2024 - Present | Weightlifting Team, IIT Roorkee</div>
+                                        <p><strong>Achievements:</strong> Bronze Medal (77kg, IT BHU), Silver Medal (83kg, IIT Ropar), multiple intra-IIT medals. Demonstrates discipline, consistency, and competitive mindset.</p>
                                     </div>
                                 </div>
                             </div>
                         </section>
 
-                        <!-- BLOG SECTION (HOME PREVIEW) -->
                         <section id="blog" class="fade-in-on-scroll">
                             <h2 class="section-title">Train of <span>Thought</span></h2>
-                            <p style="text-align: center; color: var(--color-text-light); font-size: 1.05rem; margin-bottom: var(--spacing-2xl);">Essays on learning, product thinking, and personal growth</p>
+                            <p style="text-align: center; color: var(--color-text-light); font-size: 1.05rem; margin-bottom: var(--spacing-2xl); max-width: 700px; margin-left: auto; margin-right: auto;">Essays on learning, discipline, product thinking, and personal growth. Clarity over noise. Depth over virality.</p>
                             
                             <div class="blog-filter">
                                 <button class="filter-btn active" data-filter="all">All</button>
@@ -1448,7 +1581,7 @@
                                 ${blogPosts.map(post => `
                                     <article class="blog-card fade-in-on-scroll" data-category="${post.category}">
                                         <div class="blog-date">${post.date}</div>
-                                        <div class="blog-category-tag">${post.category.toUpperCase()}</div>
+                                        <div class="blog-category-tag">${post.category.charAt(0).toUpperCase() + post.category.slice(1)}</div>
                                         <h3>${post.title}</h3>
                                         <p class="blog-excerpt">${post.excerpt}</p>
                                         <div class="blog-meta">
@@ -1456,34 +1589,40 @@
                                             <span>•</span>
                                             <span>${post.category}</span>
                                         </div>
-                                        <a onclick="navigateToBlogPost('${post.id}')" class="blog-read-more">Read Article →</a>
+                                        <a href="javascript:void(0)" onclick="navigateToBlogPost('${post.id}')" class="blog-read-more">Read Article →</a>
                                     </article>
                                 `).join('')}
                             </div>
                         </section>
 
-                        <!-- CONTACT SECTION -->
                         <section id="contact">
                             <div class="contact-section fade-in-on-scroll">
                                 <h2>Let's Connect</h2>
-                                <p>I'm interested in discussing product strategy, analytics, and career opportunities.</p>
+                                <p>I'm always interested in discussing product strategy, analytics challenges, and career opportunities.</p>
                                 <div class="contact-methods">
-                                    <a href="mailto:anshul.eskey@gmail.com" class="contact-method">
+                                    <a href="mailto:anshuleskey999@gmail.com" class="contact-method">
                                         <span>✉️</span>
                                         <div>
                                             <div style="font-size: 0.9rem; font-weight: 600;">Email</div>
-                                            <div style="font-size: 0.8rem; opacity: 0.9;">anshul.eskey@gmail.com</div>
+                                            <div style="font-size: 0.8rem; opacity: 0.9;">anshuleskey999@gmail.com</div>
                                         </div>
                                     </a>
-                                    <a href="https://linkedin.com/in/anshul-eskey" class="contact-method">
+                                    <a href="https://www.linkedin.com/in/anshul-eskey-ba0821292" class="contact-method">
                                         <span>💼</span>
                                         <div>
                                             <div style="font-size: 0.9rem; font-weight: 600;">LinkedIn</div>
                                             <div style="font-size: 0.8rem; opacity: 0.9;">View Profile</div>
                                         </div>
                                     </a>
+                                    <a href="https://github.com/AnshulEsk1488" class="contact-method">
+                                        <span>💻</span>
+                                        <div>
+                                            <div style="font-size: 0.9rem; font-weight: 600;">GitHub</div>
+                                            <div style="font-size: 0.8rem; opacity: 0.9;">View Work</div>
+                                        </div>
+                                    </a>
                                 </div>
-                                <button class="btn-primary" style="margin-top: var(--spacing-lg); background: rgba(255, 255, 255, 0.25); border: 2px solid white;">Schedule a Call</button>
+                                <button class="btn-primary" style="margin-top: var(--spacing-lg); background: rgba(255, 255, 255, 0.25); border: 2px solid white; cursor: pointer;" onclick="alert('Calendar integration would be here')">Schedule a Call</button>
                             </div>
                         </section>
                     </div>
@@ -1492,9 +1631,6 @@
             `;
         }
 
-        /* ========================================
-           PROJECTS PAGE
-           ======================================== */
         function renderProjects() {
             return `
                 ${renderHeader()}
@@ -1503,7 +1639,7 @@
                         <div class="page-hero">
                             <div>
                                 <h1>Featured Projects</h1>
-                                <p style="font-size: 1.2rem; color: var(--color-text-light); margin-top: var(--spacing-md);">Detailed case studies and project breakdowns</p>
+                                <p style="font-size: 1.2rem; color: var(--color-text-light); margin-top: var(--spacing-md);">Case studies and detailed breakdowns of key projects</p>
                             </div>
                         </div>
 
@@ -1518,14 +1654,14 @@
                                             <span class="project-tag">SQL</span>
                                             <span class="project-tag">BI</span>
                                         </div>
-                                        <p class="project-description">Built comprehensive SQL queries to track user journey and conversion funnels. Identified friction points and recommended optimizations.</p>
-                                        <div style="margin-top: var(--spacing-lg); color: var(--color-text-light); padding: var(--spacing-lg); background: var(--color-bg-light); border-radius: var(--radius-md);">
-                                            <h4 style="margin-bottom: var(--spacing-md); color: var(--color-text-dark);">Problem</h4>
-                                            <p>No real-time visibility into user behavior, resulting in high cart abandonment.</p>
-                                            <h4 style="margin-bottom: var(--spacing-md); margin-top: var(--spacing-md); color: var(--color-text-dark);">Solution</h4>
-                                            <p>Built centralized dashboard with user segmentation and funnel analysis.</p>
-                                            <h4 style="margin-bottom: var(--spacing-md); margin-top: var(--spacing-md); color: var(--color-text-dark);">Impact</h4>
-                                            <p>32% increase in retention, 18% improvement in checkout completion, $450K additional revenue.</p>
+                                        <p class="project-description">Designed comprehensive analytics framework for e-commerce platform. Built SQL queries to track user journey, conversion funnels, and product performance. Identified friction points in checkout flow and recommended optimization strategies.</p>
+                                        <div style="margin-top: var(--spacing-lg); color: var(--color-text-light);">
+                                            <h4 style="margin-bottom: var(--spacing-md);">Problem:</h4>
+                                            <p>E-commerce platform had no real-time visibility into user behavior, resulting in missed optimization opportunities and high cart abandonment rates.</p>
+                                            <h4 style="margin-bottom: var(--spacing-md); margin-top: var(--spacing-md);">Solution:</h4>
+                                            <p>Built a centralized analytics dashboard with user behavior segmentation, funnel analysis, and product-level metrics. Identified top 5 abandonment points in checkout.</p>
+                                            <h4 style="margin-bottom: var(--spacing-md); margin-top: var(--spacing-md);">Impact:</h4>
+                                            <p>32% increase in user retention, 18% improvement in checkout completion rate, $450K additional annual revenue.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -1539,14 +1675,14 @@
                                             <span class="project-tag">Market Research</span>
                                             <span class="project-tag">GTM</span>
                                         </div>
-                                        <p class="project-description">Conducted competitive analysis of 15+ competitors. Interviewed 40+ potential customers. Developed positioning and GTM strategy.</p>
-                                        <div style="margin-top: var(--spacing-lg); color: var(--color-text-light); padding: var(--spacing-lg); background: var(--color-bg-light); border-radius: var(--radius-md);">
-                                            <h4 style="margin-bottom: var(--spacing-md); color: var(--color-text-dark);">Problem</h4>
-                                            <p>Unclear market positioning and confused messaging.</p>
-                                            <h4 style="margin-bottom: var(--spacing-md); margin-top: var(--spacing-md); color: var(--color-text-dark);">Solution</h4>
-                                            <p>Segmented market into 5 personas. Identified unique value: 50% faster implementation.</p>
-                                            <h4 style="margin-bottom: var(--spacing-md); margin-top: var(--spacing-md); color: var(--color-text-dark);">Impact</h4>
-                                            <p>$2.5M ARR projection, 3x improvement in conversion, clear product-market fit.</p>
+                                        <p class="project-description">Conducted competitive analysis of 15+ direct and indirect competitors. Interviewed 40+ potential customers across different segments. Developed comprehensive go-to-market strategy with positioning, messaging, and pricing recommendations.</p>
+                                        <div style="margin-top: var(--spacing-lg); color: var(--color-text-light);">
+                                            <h4 style="margin-bottom: var(--spacing-md);">Problem:</h4>
+                                            <p>SaaS startup had unclear market positioning and no differentiation strategy, leading to confused messaging and slow customer acquisition.</p>
+                                            <h4 style="margin-bottom: var(--spacing-md); margin-top: var(--spacing-md);">Solution:</h4>
+                                            <p>Segmented market into 5 distinct buyer personas. Mapped competitive landscape. Identified unique value proposition around ease of integration and 50% faster implementation.</p>
+                                            <h4 style="margin-bottom: var(--spacing-md); margin-top: var(--spacing-md);">Impact:</h4>
+                                            <p>$2.5M ARR projection, 3x improvement in sales conversion, clear product-market fit in target segment.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -1560,14 +1696,14 @@
                                             <span class="project-tag">UX</span>
                                             <span class="project-tag">Insights</span>
                                         </div>
-                                        <p class="project-description">Led mixed-methods research: 30 interviews, 500-person survey, behavioral analysis. Synthesized findings into actionable recommendations.</p>
-                                        <div style="margin-top: var(--spacing-lg); color: var(--color-text-light); padding: var(--spacing-lg); background: var(--color-bg-light); border-radius: var(--radius-md);">
-                                            <h4 style="margin-bottom: var(--spacing-md); color: var(--color-text-dark);">Problem</h4>
-                                            <p>Team making feature decisions without understanding user needs.</p>
-                                            <h4 style="margin-bottom: var(--spacing-md); margin-top: var(--spacing-md); color: var(--color-text-dark);">Solution</h4>
-                                            <p>Comprehensive research program with user personas and journey maps. Top 10 pain points identified.</p>
-                                            <h4 style="margin-bottom: var(--spacing-md); margin-top: var(--spacing-md); color: var(--color-text-dark);">Impact</h4>
-                                            <p>15+ validated hypotheses, 85% accuracy in prioritization, 40% reduction in dev cycle.</p>
+                                        <p class="project-description">Led mixed-methods research including 30 user interviews, 500-person survey, and behavioral analysis. Synthesized findings into actionable product recommendations with supporting evidence.</p>
+                                        <div style="margin-top: var(--spacing-lg); color: var(--color-text-light);">
+                                            <h4 style="margin-bottom: var(--spacing-md);">Problem:</h4>
+                                            <p>Product team making feature decisions without clear understanding of user needs and pain points, leading to wasted development effort.</p>
+                                            <h4 style="margin-bottom: var(--spacing-md); margin-top: var(--spacing-md);">Solution:</h4>
+                                            <p>Conducted comprehensive research program combining qualitative interviews with quantitative survey data. Created user personas and journey maps. Identified top 10 user pain points.</p>
+                                            <h4 style="margin-bottom: var(--spacing-md); margin-top: var(--spacing-md);">Impact:</h4>
+                                            <p>15+ validated hypotheses, 85% accuracy in feature prioritization, 40% reduction in feature development cycle.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -1579,9 +1715,6 @@
             `;
         }
 
-        /* ========================================
-           BLOG LIST PAGE
-           ======================================== */
         function renderBlog() {
             return `
                 ${renderHeader()}
@@ -1590,7 +1723,7 @@
                         <div class="page-hero">
                             <div>
                                 <h1>Train of Thought</h1>
-                                <p style="font-size: 1.2rem; color: var(--color-text-light); margin-top: var(--spacing-md);">Essays on learning, product, and personal growth</p>
+                                <p style="font-size: 1.2rem; color: var(--color-text-light); margin-top: var(--spacing-md);">Essays on learning, product thinking, and personal growth</p>
                             </div>
                         </div>
 
@@ -1607,7 +1740,7 @@
                                 ${blogPosts.map(post => `
                                     <article class="blog-card" data-category="${post.category}">
                                         <div class="blog-date">${post.date}</div>
-                                        <div class="blog-category-tag">${post.category.toUpperCase()}</div>
+                                        <div class="blog-category-tag">${post.category.charAt(0).toUpperCase() + post.category.slice(1)}</div>
                                         <h3>${post.title}</h3>
                                         <p class="blog-excerpt">${post.excerpt}</p>
                                         <div class="blog-meta">
@@ -1615,7 +1748,7 @@
                                             <span>•</span>
                                             <span>${post.category}</span>
                                         </div>
-                                        <a onclick="navigateToBlogPost('${post.id}')" class="blog-read-more">Read Article →</a>
+                                        <a href="javascript:void(0)" onclick="navigateToBlogPost('${post.id}')" class="blog-read-more">Read Article →</a>
                                     </article>
                                 `).join('')}
                             </div>
@@ -1626,21 +1759,16 @@
             `;
         }
 
-        /* ========================================
-           BLOG POST DETAIL PAGE
-           
-           Shows full blog post content when user clicks "Read Article"
-           ======================================== */
         function renderBlogPost(postId) {
             const post = blogPosts.find(p => p.id === postId);
-            if (!post) return `${renderHeader()}<section><h1>Post not found</h1></section>${renderFooter()}`;
+            if (!post) return `${renderHeader()}<div class="page-container"><section><h1>Post not found</h1></section></div>${renderFooter()}`;
 
             return `
                 ${renderHeader()}
                 <div class="page-container">
                     <div class="page-content">
                         <article class="blog-post-header">
-                            <div class="blog-category-tag">${post.category.toUpperCase()}</div>
+                            <div class="blog-category-tag">${post.category.charAt(0).toUpperCase() + post.category.slice(1)}</div>
                             <h1>${post.title}</h1>
                             <div class="blog-post-meta">
                                 <span>${post.date}</span>
@@ -1654,9 +1782,11 @@
                         </article>
 
                         <section style="text-align: center; padding: var(--spacing-2xl) var(--spacing-lg); margin-top: var(--spacing-xl); border-top: 1px solid rgba(26, 26, 26, 0.1);">
-                            <p style="margin-bottom: var(--spacing-lg);">Want to read more?</p>
-                            <button class="btn-primary" onclick="navigateTo('${pages.blog}')" style="background: linear-gradient(135deg, var(--color-orange-primary), var(--color-yellow)); border: none; margin-right: var(--spacing-md);">All Essays</button>
-                            <button class="btn-secondary" onclick="navigateTo('${pages.contact}')">Get In Touch</button>
+                            <p style="margin-bottom: var(--spacing-lg);">Enjoyed this essay?</p>
+                            <div style="display: flex; gap: var(--spacing-md); justify-content: center; flex-wrap: wrap;">
+                                <button class="btn-primary" onclick="navigateTo('${pages.blog}')" style="background: linear-gradient(135deg, var(--color-orange-primary), var(--color-yellow)); border: none;">Read More Essays</button>
+                                <button onclick="navigateTo('${pages.contact}')" class="btn-secondary" style="text-decoration: none;">Get in Touch</button>
+                            </div>
                         </section>
                     </div>
                     ${renderFooter()}
@@ -1664,9 +1794,6 @@
             `;
         }
 
-        /* ========================================
-           CONTACT PAGE
-           ======================================== */
         function renderContact() {
             return `
                 ${renderHeader()}
@@ -1675,31 +1802,31 @@
                         <div class="page-hero">
                             <div>
                                 <h1>Let's Connect</h1>
-                                <p style="font-size: 1.2rem; color: var(--color-text-light); margin-top: var(--spacing-md);">I'm interested in discussing product, analytics, and opportunities</p>
+                                <p style="font-size: 1.2rem; color: var(--color-text-light); margin-top: var(--spacing-md);">I'm always interested in discussing product strategy, analytics, and career opportunities</p>
                             </div>
                         </div>
 
-                        <section style="padding: var(--spacing-2xl) var(--spacing-lg); max-width: 800px; margin: 0 auto;">
+                        <section style="padding: var(--spacing-2xl) var(--spacing-lg); max-width: 800px;">
                             <div class="contact-section">
                                 <h2>Get In Touch</h2>
-                                <p>Whether you want to discuss a project, explore collaboration, or chat about product and analytics—I'd love to hear from you.</p>
+                                <p>Whether you want to discuss a project, explore collaboration opportunities, or just chat about product and analytics—I'd love to hear from you.</p>
                                 
                                 <div class="contact-methods">
-                                    <a href="mailto:anshul.eskey@gmail.com" class="contact-method">
+                                    <a href="mailto:anshuleskey999@gmail.com" class="contact-method">
                                         <span>✉️</span>
                                         <div>
                                             <div style="font-size: 0.9rem; font-weight: 600;">Email</div>
-                                            <div style="font-size: 0.8rem; opacity: 0.9;">anshul.eskey@gmail.com</div>
+                                            <div style="font-size: 0.8rem; opacity: 0.9;">anshuleskey999@gmail.com</div>
                                         </div>
                                     </a>
-                                    <a href="https://linkedin.com/in/anshul-eskey" class="contact-method">
+                                    <a href="https://www.linkedin.com/in/anshul-eskey-ba0821292" class="contact-method">
                                         <span>💼</span>
                                         <div>
                                             <div style="font-size: 0.9rem; font-weight: 600;">LinkedIn</div>
                                             <div style="font-size: 0.8rem; opacity: 0.9;">View Profile</div>
                                         </div>
                                     </a>
-                                    <a href="https://github.com" class="contact-method">
+                                    <a href="https://github.com/AnshulEsk1488" class="contact-method">
                                         <span>💻</span>
                                         <div>
                                             <div style="font-size: 0.9rem; font-weight: 600;">GitHub</div>
@@ -1707,15 +1834,17 @@
                                         </div>
                                     </a>
                                 </div>
-                                <button class="btn-primary" style="margin-top: var(--spacing-lg); background: rgba(255, 255, 255, 0.25); border: 2px solid white;">Schedule a Call</button>
+
+                                <button class="btn-primary" style="margin-top: var(--spacing-lg); background: rgba(255, 255, 255, 0.25); border: 2px solid white; cursor: pointer;" onclick="alert('Calendar integration would be here')">Schedule a Call</button>
                             </div>
 
                             <div style="margin-top: var(--spacing-2xl); padding: var(--spacing-xl); background: linear-gradient(135deg, var(--color-bg-light), white); border-radius: var(--radius-lg); border: 2px solid var(--color-mint);">
                                 <h3 style="margin-bottom: var(--spacing-md); color: var(--color-text-dark);">Also Find Me On</h3>
                                 <ul style="list-style: none; color: var(--color-text-light);">
                                     <li style="margin-bottom: var(--spacing-sm);"><strong>Twitter/X:</strong> @anshul_eskey</li>
-                                    <li style="margin-bottom: var(--spacing-sm);"><strong>GitHub:</strong> github.com/anshul-eskey</li>
-                                    <li style="margin-bottom: var(--spacing-sm);"><strong>LinkedIn:</strong> linkedin.com/in/anshul-eskey</li>
+                                    <li style="margin-bottom: var(--spacing-sm);"><strong>GitHub:</strong> https://github.com/AnshulEsk1488</li>
+                                    <li style="margin-bottom: var(--spacing-sm);"><strong>LinkedIn:</strong> https://www.linkedin.com/in/anshul-eskey-ba0821292
+</li>
                                 </ul>
                             </div>
                         </section>
@@ -1725,13 +1854,21 @@
             `;
         }
 
-        /* ========================================
-           MAIN RENDER FUNCTION
-           
-           This renders the current page based on currentPage state
-           ======================================== */
+        function navigateTo(page) {
+            currentPage = page;
+            currentBlogPost = null;
+            renderApp();
+            window.scrollTo(0, 0);
+        }
+
+        function navigateToBlogPost(postId) {
+            currentPage = pages.blogPost;
+            currentBlogPost = postId;
+            renderApp();
+            window.scrollTo(0, 0);
+        }
+
         function renderApp() {
-            const app = document.getElementById('app');
             let content = '';
             
             if (currentPage === pages.home) {
@@ -1749,66 +1886,52 @@
             }
 
             app.innerHTML = content;
-            attachEventListeners();
+            
+            // Re-attach event listeners for specific page elements
+            attachPageEventListeners();
         }
 
-        /* ========================================
-           EVENT LISTENERS
-           
-           Attach scroll animations and blog filters
-           ======================================== */
-        function attachEventListeners() {
-            // Scroll animations
-            const observerOptions = {
-                threshold: 0.15,
-                rootMargin: '0px 0px -100px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, observerOptions);
-
+        function attachPageEventListeners() {
+            // Scroll animations observation
             document.querySelectorAll('.fade-in-on-scroll').forEach(el => {
                 observer.observe(el);
             });
 
-            // Blog filter
+            // Blog filter logic
             const filterBtns = document.querySelectorAll('.filter-btn');
             const blogCards = document.querySelectorAll('.blog-card');
 
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    filterBtns.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
+            if (filterBtns.length > 0) {
+                filterBtns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        filterBtns.forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
 
-                    const filter = btn.getAttribute('data-filter');
+                        const filter = btn.getAttribute('data-filter');
 
-                    blogCards.forEach(card => {
-                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                            card.style.display = 'flex';
-                        } else {
-                            card.style.display = 'none';
-                        }
+                        blogCards.forEach(card => {
+                            if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                                card.style.display = 'flex';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
                     });
                 });
-            });
-
-            // Parallax effect on particles
-            document.addEventListener('mousemove', (e) => {
-                const particles = document.querySelectorAll('.particle');
-                const x = e.clientX / window.innerWidth;
-                const y = e.clientY / window.innerHeight;
-
-                particles.forEach((particle, index) => {
-                    const speed = (index + 1) * 10;
-                    particle.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
-                });
-            });
+            }
         }
+
+        // Global Event Listeners (Run once)
+        document.addEventListener('mousemove', (e) => {
+            const particles = document.querySelectorAll('.particle');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+
+            particles.forEach((particle, index) => {
+                const speed = (index + 1) * 10;
+                particle.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+            });
+        });
 
         // Initialize app
         renderApp();
