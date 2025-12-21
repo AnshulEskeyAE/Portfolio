@@ -1,0 +1,29 @@
+# GitHub Pages Configuration
+# This file configures Jekyll settings for the GitHub Pages deployment
+
+# Disable Jekyll processing (handled by .nojekyll)
+markdown: kramdown
+theme: null
+
+# Site settings
+title: Anshul Eskey | Product Manager & Analytics Strategist
+description: Chemical Engineering Student | Product Strategy | Analytics
+
+# Build settings
+exclude:
+  - .gitignore
+  - README.md
+  - DEPLOYMENT.md
+
+# Plugins
+plugins: []
+
+# Output settings
+permalink: /:categories/:year/:month/:day/:title:output_ext
+
+# Additional config
+source: .
+destination: ./_site
+encoding: utf-8
+future: false
+jeckyll_env: production

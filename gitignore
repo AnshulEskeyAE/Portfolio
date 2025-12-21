@@ -1,0 +1,48 @@
+# Git Ignore Configuration
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.sublime-project
+.sublime-workspace
+
+# Node modules (if using any)
+node_modules/
+package-lock.json
+npm-debug.log
+
+# Ruby/Jekyll
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+Gemfile.lock
+
+# Build output
+_site/
+.asset-cache
+.bundle
+.cache
+coverage/
+dist/
+tmp/
+
+# Local development
+.env
+.env.local
+*.log
+
+# IDE temp files
+*.bak
+*.tmp

@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anshul Eskey | Product Manager & Analytics Strategist</title>
+    <style>
+        /* ============================================
+           CSS VARIABLES & DESIGN TOKENS
+           ============================================ */
+        :root {
+            --color-orange-primary: #F59F1C;
+            --color-orange-light: #FFB84D;
+            --color-yellow: #FFCB69;
+            --color-mint: #A8E6D8;
+            --color-teal: #2EC4B6;
+            --color-teal-dark: #1BA396;
+            --color-white: #FFFFFF;
+            --color-text-dark: #1A1A1A;
+            --color-text-light: #4A4A4A;
+            --color-bg-light: #FAFAFA;
+            
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --spacing-2xl: 4rem;
+            
+            --radius-sm: 0.375rem;
+            --radius-md: 0.75rem;
+            --radius-lg: 1.25rem;
+            
+            --duration-fast: 150ms;
+            --duration-normal: 300ms;
+            --duration-slow: 500ms;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--color-white);
+            color: var(--color-text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ============================================
+           PARTICLE BACKGROUND
+           ============================================ */
+        .particle-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.3;
+            mix-blend-mode: multiply;
+        }
+
+        .particle-1 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, #FFB84D, #FFCB69);
+            top: -100px;
+            right: -150px;
+            border-radius: 50%;
+        }
+
+        .particle-2 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #A8E6D8, #2EC4B6);
+            bottom: 50px;
+            left: -100px;
+            border-radius: 50%;
+        }
+
+        .particle-3 {
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(135deg, #FFCB69, #FFB84D);
+            bottom: 200px;
+            right: 100px;
+            border-radius: 50%;
+        }
+
+        .particle-4 {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #A8E6D8, #B3E5C9);
+            top: 300px;
+            left: 50px;
+            border-radius: 50%;
+        }
+
+        .particle-5 {
+            width: 180px;
+            height: 180px;
+            background: linear-gradient(135deg, #FFE5B4, #FFCB69);
+            top: 100px;
+            right: 200px;
+            border-radius: 50%;
+        }
+
+        /* ============================================
+           NAVIGATION
+           ============================================ */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(245, 159, 28, 0.1);
+            padding: 1rem 2rem;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #F59F1C, #2EC4B6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            cursor: pointer;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a,
+        .nav-links button {
+            color: #1A1A1A;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after,
+        .nav-links button::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #F59F1C, #2EC4B6);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after,
+        .nav-links button:hover::after,
+        .nav-links button.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links button:hover {
+            color: #F59F1C;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #2EC4B6, #1BA396);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(46, 196, 182, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(46, 196, 182, 0.35);
+        }
+
+        .cta-button::after {
+            display: none;
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem 4rem;
+            position: relative;
+            z-index: 1;
+            margin-top: 60px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 8vw, 3.5rem);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            font-weight: 900;
+            color: #1A1A1A;
+        }
+
+        .hero-highlight {
+            background: linear-gradient(135deg, #F59F1C, #2EC4B6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: #4A4A4A;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 500;
+        }
+
+        .hero-subtext {
+            font-size: 1rem;
+            color: #4A4A4A;
+            margin-bottom: 2.5rem;
+            opacity: 0.85;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: 2px solid;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #F59F1C, #FFCB69);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 8px 20px rgba(245, 159, 28, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(245, 159, 28, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #2EC4B6;
+            border-color: #2EC4B6;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(46, 196, 182, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: scrollBounce 2s infinite;
+            opacity: 0.6;
+            font-size: 1.5rem;
+        }
+
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* ============================================
+           SECTIONS & TYPOGRAPHY
+           ============================================ */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            font-weight: 800;
+            color: #1A1A1A;
+        }
+
+        .section-title .highlight {
+            background: linear-gradient(135deg, #F59F1C, #2EC4B6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ============================================
+           ABOUT SECTION
+           ============================================ */
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #1A1A1A;
+            line-height: 1.2;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: #4A4A4A;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .highlight-text {
+            color: #F59F1C;
+            font-weight: 700;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, rgba(245, 159, 28, 0.08), rgba(46, 196, 182, 0.08));
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 2px solid rgba(245, 159, 28, 0.15);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-card:hover {
+            border-color: #F59F1C;
+            transform: translateY(-5px);
+            background: linear-gradient(135deg, rgba(245, 159, 28, 0.15), rgba(46, 196, 182, 0.15));
+        }
+
+        .skill-card h4 {
+            color: #F59F1C;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .skill-card p {
+            font-size: 0.95rem;
+            color: #4A4A4A;
+            margin: 0;
+        }
+
+        .about-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .visual-box {
+            width: 280px;
+            height: 280px;
+            background: linear-gradient(135deg, #F59F1C, #FFCB69, #A8E6D8, #2EC4B6);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            box-shadow: 0 20px 60px rgba(245, 159, 28, 0.15);
+            position: relative;
+        }
+
+        /* ============================================
+           STATS SECTION
+           ============================================ */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-box {
+            background: #FAFAFA;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(245, 159, 28, 0.1);
+            border-color: #A8E6D8;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #F59F1C, #2EC4B6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #4A4A4A;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        /* ============================================
+           PROJECTS SECTION
+           ============================================ */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background: white;
+            border: 2px solid #FAFAFA;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .project-card:hover {
+            border-color: #2EC4B6;
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(46, 196, 182, 0.15);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #F59F1C, #FFCB69, #A8E6D8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            border-bottom: 1px solid #FAFAFA;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            color: #1A1A1A;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .project-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(245, 159, 28, 0.1), rgba(46, 196, 182, 0.1));
+            color: #F59F1C;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid rgba(245, 159, 28, 0.2);
+        }
+
+        .project-description {
+            color: #4A4A4A;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .project-impact {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem;
+            background: linear-gradient(135deg, rgba(46, 196, 182, 0.1), rgba(168, 230, 216, 0.1));
+            border-left: 3px solid #2EC4B6;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: #1A1A1A;
+            font-weight: 600;
+        }
+
+        /* ============================================
+           EXPERIENCE TIMELINE
+           ============================================ */
+        .experience-timeline {
+            position: relative;
+            padding: 2rem 0;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(180deg, #F59F1C, #2EC4B6, transparent);
+        }
+
+        .experience-item {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .experience-item:nth-child(odd) {
+            text-align: right;
+            padding-right: 52%;
+            padding-left: 2rem;
+        }
+
+        .experience-item:nth-child(even) {
+            text-align: left;
+            padding-left: 52%;
+            padding-right: 2rem;
+        }
+
+        .experience-dot {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            background: linear-gradient(135deg, #F59F1C, #2EC4B6);
+            border: 4px solid white;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            box-shadow: 0 0 0 4px #F59F1C;
+        }
+
+        .experience-content {
+            background: linear-gradient(135deg, #FAFAFA, white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 2px solid #A8E6D8;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .experience-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #F59F1C, #2EC4B6);
+            border-radius: 12px 12px 0 0;
+        }
+
+        .experience-content:hover {
+            border-color: #F59F1C;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(245, 159, 28, 0.1);
+        }
+
+        .experience-content h3 {
+            color: #1A1A1A;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .experience-content .meta {
+            font-size: 0.85rem;
+            color: #F59F1C;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .experience-content p {
+            margin: 0;
+            color: #4A4A4A;
+            font-size: 0.95rem;
+        }
+
+        /* ============================================
+           BLOG SECTION
+           ============================================ */
+        .blog-filter {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.6rem 1.4rem;
+            border: 2px solid #F59F1C;
+            background: transparent;
+            color: #F59F1C;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #F59F1C;
+            color: white;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background: white;
+            border: 2px solid #FAFAFA;
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .blog-card:hover {
+            border-color: #2EC4B6;
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(46, 196, 182, 0.15);
+        }
+
+        .blog-date {
+            font-size: 0.85rem;
+            color: #F59F1C;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .blog-category-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(245, 159, 28, 0.1), rgba(46, 196, 182, 0.1));
+            color: #2EC4B6;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+            width: fit-content;
+            border: 1px solid rgba(46, 196, 182, 0.2);
+        }
+
+        .blog-card h3 {
+            color: #1A1A1A;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+            flex-grow: 1;
+        }
+
+        .blog-excerpt {
+            color: #4A4A4A;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            color: #4A4A4A;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .blog-read-more {
+            color: #F59F1C;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .blog-read-more:hover {
+            color: #2EC4B6;
+            transform: translateX(4px);
+        }
+
+        /* ============================================
+           CONTACT SECTION
+           ============================================ */
+        .contact-section {
+            text-align: center;
+            background: linear-gradient(135deg, #F59F1C, #FFCB69, #A8E6D8, #2EC4B6);
+            border-radius: 16px;
+            padding: 4rem 2rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-section p {
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+            opacity: 0.95;
+        }
+
+        .contact-methods {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1.2rem 1.8rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .contact-method:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-3px);
+        }
+
+        .contact-method span {
+            font-size: 1.3rem;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        footer {
+            background: #1A1A1A;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+            list-style: none;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #F59F1C, #2EC4B6);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 700;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(245, 159, 28, 0.3);
+        }
+
+        .footer-text {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .footer-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 2rem 0;
+        }
+
+        /* ============================================
+           RESPONSIVE DESIGN
+           ============================================ */
+        @media (max-width: 768px) {
+            nav {
+                padding: 0.8rem 1.5rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .nav-links a,
+            .nav-links button {
+                font-size: 0.8rem;
+            }
+
+            .cta-button {
+                display: none;
+            }
+
+            .hero {
+                padding: 4rem 1.5rem 3rem;
+                margin-top: 50px;
+            }
+
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-content p {
+                font-size: 0.95rem;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                text-align: center;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .visual-box {
+                width: 200px;
+                height: 200px;
+                font-size: 4rem;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .experience-timeline::before {
+                left: 15px;
+            }
+
+            .experience-item:nth-child(odd),
+            .experience-item:nth-child(even) {
+                text-align: left;
+                padding-left: 50px;
+                padding-right: 0;
+            }
+
+            .experience-dot {
+                left: 0;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-methods {
+                flex-direction: column;
+            }
+
+            .contact-method {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links a,
+            .nav-links button {
+                font-size: 0.7rem;
+            }
+
+            .hero-content h1 {
+                font-size: 1.3rem;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .stat-number {
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .hero-actions {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="particle-background">
+        <div class="particle particle-1"></div>
+        <div class="particle particle-2"></div>
+        <div class="particle particle-3"></div>
+        <div class="particle particle-4"></div>
+        <div class="particle particle-5"></div>
+    </div>
+
+    <nav>
+        <div class="nav-container">
+            <a class="nav-logo" href="#home">Anshul Eskey</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#resume" class="cta-button">Resume</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Product Manager & <span class="hero-highlight">Analytics Strategist</span></h1>
+            <p>Chemical Engineering Student at IIT Roorkee</p>
+            <p class="hero-subtext">Building clarity through strategy, depth through learning, and value through precision</p>
+            <div class="hero-actions">
+                <button class="btn-primary">Get Started</button>
+                <a href="#about" class="btn-secondary">Learn More</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">↓</div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">About <span class="highlight">Me</span></h2>
+        <div class="about-container">
+            <div class="about-text">
+                <h3>Aspiring Product Manager & Analytics Strategist</h3>
+                <p>I'm a <span class="highlight-text">Chemical Engineering student</span> with a strong inclination toward <span class="highlight-text">structured thinking, analytics, and product management</span>.</p>
+                <p>Rather than chasing virality, I focus on <span class="highlight-text">depth over noise, consistency over burnout</span>, and learning in public.</p>
+                
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h4>Analytics</h4>
+                        <p>Data interpretation, user behavior</p>
+                    </div>
+                    <div class="skill-card">
+                        <h4>Product Strategy</h4>
+                        <p>GTM planning, market research</p>
+                    </div>
+                    <div class="skill-card">
+                        <h4>Systems Thinking</h4>
+                        <p>Problem-solving, structured reasoning</p>
+                    </div>
+                    <div class="skill-card">
+                        <h4>Technical Skills</h4>
+                        <p>SQL, Python, Excel, BI tools</p>
+                    </div>
+                </div>
+            </div>
+            <div class="about-visual">
+                <div class="visual-box">📊</div>
+            </div>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-box">
+                <div class="stat-number">5</div>
+                <div class="stat-label">Analytics Projects</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">3</div>
+                <div class="stat-label">Case Studies</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">95%</div>
+                <div class="stat-label">Data Accuracy</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">8</div>
+                <div class="stat-label">Published Insights</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title">Featured <span class="highlight">Projects</span></h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image">📈</div>
+                <div class="project-content">
+                    <h3>E-Commerce Analytics Framework</h3>
+                    <div class="project-meta">
+                        <span class="project-tag">Analytics</span>
+                        <span class="project-tag">SQL</span>
+                        <span class="project-tag">BI</span>
+                    </div>
+                    <p class="project-description">Designed comprehensive analytics framework for e-commerce platform.</p>
+                    <div class="project-impact">📊 Result: 32% increase in user retention</div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">🎯</div>
+                <div class="project-content">
+                    <h3>B2B SaaS Positioning Strategy</h3>
+                    <div class="project-meta">
+                        <span class="project-tag">Strategy</span>
+                        <span class="project-tag">Market Research</span>
+                        <span class="project-tag">GTM</span>
+                    </div>
+                    <p class="project-description">Conducted competitive analysis for go-to-market strategy.</p>
+                    <div class="project-impact">💰 Result: $2.5M ARR projection</div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">👥</div>
+                <div class="project-content">
+                    <h3>Consumer Behavior Research</h3>
+                    <div class="project-meta">
+                        <span class="project-tag">Research</span>
+                        <span class="project-tag">UX</span>
+                        <span class="project-tag">Insights</span>
+                    </div>
+                    <p class="project-description">Led mixed-methods research for product recommendations.</p>
+                    <div class="project-impact">✓ Result: 15 validated hypotheses</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2 class="section-title">Experience <span class="highlight">Journey</span></h2>
+        <div class="experience-timeline">
+            <div class="experience-item">
+                <div class="experience-dot"></div>
+                <div class="experience-content">
+                    <h3>Manager</h3>
+                    <div class="meta">Current • Career Development Cell, IIT Roorkee</div>
+                    <p>Managing Research and Analytics vertical. Driving structured analysis and data-driven initiatives.</p>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-dot"></div>
+                <div class="experience-content">
+                    <h3>Department Representative</h3>
+                    <div class="meta">Current • Career Development Cell</div>
+                    <p>Connecting CDC with Chemical Engineering Department for seamless information flow.</p>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-dot"></div>
+                <div class="experience-content">
+                    <h3>Active Projects</h3>
+                    <div class="meta">Ongoing • Multiple Initiatives</div>
+                    <p>CRD Project, Consulting Analytics, Data Analytics dashboards with Tableau.</p>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-dot"></div>
+                <div class="experience-content">
+                    <h3>Competitive Athlete</h3>
+                    <div class="meta">2024 - Present • Weightlifting Team</div>
+                    <p>Demonstrates discipline, consistency, and competitive mindset through athletic achievements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="blog">
+        <h2 class="section-title">Train of <span class="highlight">Thought</span></h2>
+        <p style="text-align: center; color: #4A4A4A; font-size: 1.05rem; margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto;">Essays on learning, discipline, product thinking, and personal growth.</p>
+        
+        <div class="blog-filter">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="learning">Learning</button>
+            <button class="filter-btn" data-filter="product">Product</button>
+            <button class="filter-btn" data-filter="personal">Personal</button>
+            <button class="filter-btn" data-filter="analysis">Analysis</button>
+        </div>
+
+        <div class="blog-grid">
+            <article class="blog-card" data-category="learning">
+                <div class="blog-date">Dec 21, 2025</div>
+                <div class="blog-category-tag">learning</div>
+                <h3>The Art of Structured Reading: Building a Personal Knowledge System</h3>
+                <p class="blog-excerpt">How to read research papers and books intentionally. A framework for extracting signal from noise.</p>
+                <div class="blog-meta">
+                    <span>8 min read</span>
+                    <span>•</span>
+                    <span>learning</span>
+                </div>
+                <a href="#" class="blog-read-more">Read Article →</a>
+            </article>
+
+            <article class="blog-card" data-category="product">
+                <div class="blog-date">Dec 18, 2025</div>
+                <div class="blog-category-tag">product</div>
+                <h3>Why Most Analytics Dashboards Fail: A Framework for Clarity</h3>
+                <p class="blog-excerpt">Dashboards are tools for clarity. Yet most are designed for vanity rather than driving action.</p>
+                <div class="blog-meta">
+                    <span>12 min read</span>
+                    <span>•</span>
+                    <span>product</span>
+                </div>
+                <a href="#" class="blog-read-more">Read Article →</a>
+            </article>
+
+            <article class="blog-card" data-category="personal">
+                <div class="blog-date">Dec 15, 2025</div>
+                <div class="blog-category-tag">personal</div>
+                <h3>Discipline as Freedom: What I've Learned from Competitive Weightlifting</h3>
+                <p class="blog-excerpt">Discipline is not restriction—it's the foundation of freedom. After competing at Inter-IIT level.</p>
+                <div class="blog-meta">
+                    <span>10 min read</span>
+                    <span>•</span>
+                    <span>personal</span>
+                </div>
+                <a href="#" class="blog-read-more">Read Article →</a>
+            </article>
+
+            <article class="blog-card" data-category="analysis">
+                <div class="blog-date">Dec 12, 2025</div>
+                <div class="blog-category-tag">analysis</div>
+                <h3>The Consulting Mindset: Breaking Down Complex Problems into Actionable Insights</h3>
+                <p class="blog-excerpt">How consultants think about problems differently. A breakdown of structured problem-solving frameworks.</p>
+                <div class="blog-meta">
+                    <span>11 min read</span>
+                    <span>•</span>
+                    <span>analysis</span>
+                </div>
+                <a href="#" class="blog-read-more">Read Article →</a>
+            </article>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-section">
+            <h2>Let's Connect</h2>
+            <p>I'm always interested in discussing product strategy, analytics challenges, and career opportunities.</p>
+            <div class="contact-methods">
+                <a href="mailto:anshuleskey999@gmail.com" class="contact-method">
+                    <span>✉</span>
+                    <div style="text-align: left;">
+                        <strong>Email</strong><br>
+                        <span style="font-size: 0.85rem; opacity: 0.9;">anshuleskey999@gmail.com</span>
+                    </div>
+                </a>
+                <a href="https://www.linkedin.com/in/anshul-eskey-ba0821292/" class="contact-method">
+                    <span>in</span>
+                    <div style="text-align: left;">
+                        <strong>LinkedIn</strong><br>
+                        <span style="font-size: 0.85rem; opacity: 0.9;">View Profile</span>
+                    </div>
+                </a>
+                <a href="https://github.com/AnshulEsk1488" class="contact-method">
+                    <span>gh</span>
+                    <div style="text-align: left;">
+                        <strong>GitHub</strong><br>
+                        <span style="font-size: 0.85rem; opacity: 0.9;">View Work</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <ul class="social-links">
+                <li><a href="https://www.linkedin.com/in/anshul-eskey-ba0821292/" title="LinkedIn">in</a></li>
+                <li><a href="https://github.com/AnshulEsk1488" title="GitHub">gh</a></li>
+                <li><a href="https://twitter.com/anshuleskey" title="Twitter">tw</a></li>
+                <li><a href="mailto:anshuleskey999@gmail.com" title="Email">✉</a></li>
+            </ul>
+            <div class="footer-divider"></div>
+            <p class="footer-text">&copy; 2025 Anshul Eskey • Chemical Engineering Student at IIT Roorkee • Building clarity, depth, and precision</p>
+        </div>
+    </footer>
+
+    <script>
+        // Blog filtering
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const blogCards = document.querySelectorAll('.blog-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+                blogCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Active nav link on scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
