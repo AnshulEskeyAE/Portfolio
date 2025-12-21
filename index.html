@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anshul Eskey | Product Manager & Analytics Strategist</title>
+    <title>Anshul Eskey | Product Manager & Analytics Strategist | IIT Roorkee</title>
     <style>
-        /* ============================================
-           CSS VARIABLES & DESIGN TOKENS
-           ============================================ */
+        /* ========================================
+           ROOT VARIABLES - CUSTOMIZE COLORS HERE
+           ======================================== */
         :root {
             --color-orange-primary: #F59F1C;
             --color-orange-light: #FFB84D;
@@ -19,18 +19,15 @@
             --color-text-dark: #1A1A1A;
             --color-text-light: #4A4A4A;
             --color-bg-light: #FAFAFA;
-            
             --spacing-xs: 0.5rem;
             --spacing-sm: 1rem;
             --spacing-md: 1.5rem;
             --spacing-lg: 2rem;
             --spacing-xl: 3rem;
             --spacing-2xl: 4rem;
-            
             --radius-sm: 0.375rem;
             --radius-md: 0.75rem;
             --radius-lg: 1.25rem;
-            
             --duration-fast: 150ms;
             --duration-normal: 300ms;
             --duration-slow: 500ms;
@@ -47,16 +44,16 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             background: var(--color-white);
             color: var(--color-text-dark);
-            line-height: 1.6;
+            line-height: 1.7;
             overflow-x: hidden;
         }
 
-        /* ============================================
-           PARTICLE BACKGROUND
-           ============================================ */
+        /* ========================================
+           FLOATING PARTICLE BACKGROUND
+           ======================================== */
         .particle-background {
             position: fixed;
             top: 0;
@@ -65,74 +62,75 @@
             bottom: 0;
             pointer-events: none;
             z-index: 0;
-            overflow: hidden;
         }
 
         .particle {
             position: absolute;
             border-radius: 50%;
-            opacity: 0.3;
+            opacity: 0.4;
             mix-blend-mode: multiply;
         }
 
         .particle-1 {
-            width: 400px;
-            height: 400px;
-            background: linear-gradient(135deg, #FFB84D, #FFCB69);
-            top: -100px;
-            right: -150px;
-            border-radius: 50%;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, var(--color-orange-primary), var(--color-orange-light));
+            top: 10%;
+            right: -100px;
+            animation: float1 15s ease-in-out infinite;
         }
 
         .particle-2 {
-            width: 300px;
-            height: 300px;
-            background: linear-gradient(135deg, #A8E6D8, #2EC4B6);
-            bottom: 50px;
-            left: -100px;
-            border-radius: 50%;
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(135deg, var(--color-teal), var(--color-mint));
+            bottom: 10%;
+            left: -80px;
+            animation: float2 18s ease-in-out infinite;
         }
 
         .particle-3 {
-            width: 250px;
-            height: 250px;
-            background: linear-gradient(135deg, #FFCB69, #FFB84D);
-            bottom: 200px;
-            right: 100px;
-            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, var(--color-yellow), var(--color-mint));
+            top: 50%;
+            right: 5%;
+            animation: float3 20s ease-in-out infinite;
         }
 
         .particle-4 {
-            width: 200px;
-            height: 200px;
-            background: linear-gradient(135deg, #A8E6D8, #B3E5C9);
-            top: 300px;
-            left: 50px;
-            border-radius: 50%;
-        }
-
-        .particle-5 {
             width: 180px;
             height: 180px;
-            background: linear-gradient(135deg, #FFE5B4, #FFCB69);
-            top: 100px;
-            right: 200px;
-            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-teal-dark), var(--color-teal));
+            top: 30%;
+            left: 10%;
+            animation: float4 17s ease-in-out infinite;
         }
 
-        /* ============================================
-           NAVIGATION
-           ============================================ */
+        @keyframes float1 { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(30px, -40px) scale(1.1); } }
+        @keyframes float2 { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(-30px, 40px) scale(0.95); } }
+        @keyframes float3 { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(-20px, 30px) rotate(45deg); } }
+        @keyframes float4 { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(40px, -30px) rotate(-45deg); } }
+        @keyframes heroFadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes scrollBounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(10px); } }
+        @keyframes visualFloat { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-30px) rotate(5deg); } }
+        @keyframes shimmer { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(20px, 20px); } }
+        @keyframes contactFloat { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(50px, 50px); } }
+        @keyframes timelineIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* ========================================
+           NAVIGATION - FIXED HEADER
+           ======================================== */
         nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(245, 159, 28, 0.1);
-            padding: 1rem 2rem;
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.85);
+            border-bottom: 1px solid rgba(244, 159, 28, 0.1);
+            padding: var(--spacing-md) var(--spacing-lg);
         }
 
         .nav-container {
@@ -144,125 +142,114 @@
         }
 
         .nav-logo {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #F59F1C, #2EC4B6);
+            background: linear-gradient(135deg, var(--color-orange-primary), var(--color-teal));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-decoration: none;
             cursor: pointer;
-            letter-spacing: -0.5px;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: var(--spacing-lg);
             list-style: none;
             align-items: center;
-            margin: 0;
-            padding: 0;
         }
 
-        .nav-links a,
-        .nav-links button {
-            color: #1A1A1A;
+        .nav-links a, .nav-links button {
+            color: var(--color-text-dark);
             text-decoration: none;
             font-weight: 500;
             font-size: 0.95rem;
-            background: none;
-            border: none;
-            cursor: pointer;
+            transition: color var(--duration-fast);
             position: relative;
-            padding: 0.5rem 0;
+            border: none;
+            background: none;
+            cursor: pointer;
         }
 
-        .nav-links a::after,
-        .nav-links button::after {
+        .nav-links a::after, .nav-links button::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: -8px;
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, #F59F1C, #2EC4B6);
-            transition: width 0.3s ease;
+            background: linear-gradient(90deg, var(--color-orange-primary), var(--color-teal));
+            transition: width var(--duration-fast);
         }
 
-        .nav-links a:hover::after,
-        .nav-links a.active::after,
-        .nav-links button:hover::after,
-        .nav-links button.active::after {
+        .nav-links a:hover::after, .nav-links a.active::after, .nav-links button:hover::after {
             width: 100%;
         }
 
-        .nav-links a:hover,
-        .nav-links button:hover {
-            color: #F59F1C;
+        .nav-links a:hover, .nav-links button:hover {
+            color: var(--color-orange-primary);
         }
 
         .cta-button {
-            background: linear-gradient(135deg, #2EC4B6, #1BA396);
+            background: linear-gradient(135deg, var(--color-teal), var(--color-teal-dark));
             color: white;
-            padding: 0.7rem 1.5rem;
-            border-radius: 6px;
+            padding: 0.5rem 1.25rem;
+            border-radius: var(--radius-md);
             border: none;
             cursor: pointer;
             font-weight: 600;
             font-size: 0.9rem;
-            transition: all 0.3s ease;
+            transition: all var(--duration-normal);
             box-shadow: 0 4px 15px rgba(46, 196, 182, 0.2);
         }
 
         .cta-button:hover {
-            transform: translateY(-2px);
+            transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(46, 196, 182, 0.35);
         }
 
-        .cta-button::after {
-            display: none;
-        }
-
-        /* ============================================
+        /* ========================================
            HERO SECTION
-           ============================================ */
+           ======================================== */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 6rem 2rem 4rem;
-            position: relative;
-            z-index: 1;
+            padding: var(--spacing-xl);
             margin-top: 60px;
+            position: relative;
+            overflow: hidden;
         }
 
         .hero-content {
-            max-width: 900px;
+            max-width: 800px;
             text-align: center;
+            position: relative;
+            z-index: 10;
+            animation: heroFadeIn 1s ease-out;
         }
 
         .hero-content h1 {
-            font-size: clamp(2.5rem, 8vw, 3.5rem);
-            margin-bottom: 1rem;
+            font-size: clamp(2.5rem, 10vw, 4rem);
+            margin-bottom: var(--spacing-md);
             line-height: 1.1;
             font-weight: 900;
-            color: #1A1A1A;
+            color: var(--color-text-dark);
         }
 
         .hero-highlight {
-            background: linear-gradient(135deg, #F59F1C, #2EC4B6);
+            background: linear-gradient(135deg, var(--color-orange-primary), var(--color-teal));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            display: inline;
         }
 
         .hero-content p {
-            font-size: 1.1rem;
-            color: #4A4A4A;
-            margin-bottom: 2rem;
-            max-width: 700px;
+            font-size: 1.2rem;
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-lg);
+            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
             font-weight: 500;
@@ -270,47 +257,46 @@
 
         .hero-subtext {
             font-size: 1rem;
-            color: #4A4A4A;
-            margin-bottom: 2.5rem;
-            opacity: 0.85;
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-xl);
+            opacity: 0.9;
         }
 
         .hero-actions {
             display: flex;
-            gap: 1.5rem;
+            gap: var(--spacing-md);
             justify-content: center;
             flex-wrap: wrap;
         }
 
-        .btn-primary,
-        .btn-secondary {
-            padding: 1rem 2rem;
-            border-radius: 8px;
+        .btn-primary, .btn-secondary {
+            padding: var(--spacing-md) var(--spacing-lg);
+            border-radius: var(--radius-md);
             font-size: 1rem;
             font-weight: 600;
             text-decoration: none;
             border: 2px solid;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all var(--duration-normal);
             display: inline-block;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #F59F1C, #FFCB69);
+            background: linear-gradient(135deg, var(--color-orange-primary), var(--color-yellow));
             color: white;
             border-color: transparent;
-            box-shadow: 0 8px 20px rgba(245, 159, 28, 0.3);
+            box-shadow: 0 10px 30px rgba(245, 159, 28, 0.3);
         }
 
         .btn-primary:hover {
             transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(245, 159, 28, 0.4);
+            box-shadow: 0 15px 40px rgba(245, 159, 28, 0.4);
         }
 
         .btn-secondary {
             background: transparent;
-            color: #2EC4B6;
-            border-color: #2EC4B6;
+            color: var(--color-teal);
+            border-color: var(--color-teal);
         }
 
         .btn-secondary:hover {
@@ -328,98 +314,108 @@
             font-size: 1.5rem;
         }
 
-        @keyframes scrollBounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(10px); }
-        }
-
-        /* ============================================
-           SECTIONS & TYPOGRAPHY
-           ============================================ */
+        /* ========================================
+           SECTIONS & LAYOUT
+           ======================================== */
         section {
-            padding: 5rem 2rem;
+            padding: var(--spacing-2xl) var(--spacing-lg);
             max-width: 1200px;
             margin: 0 auto;
             position: relative;
-            z-index: 1;
+            z-index: 10;
         }
 
         .section-title {
             font-size: 2.5rem;
-            margin-bottom: 3rem;
+            margin-bottom: var(--spacing-xl);
             text-align: center;
             font-weight: 800;
-            color: #1A1A1A;
+            color: var(--color-text-dark);
         }
 
-        .section-title .highlight {
-            background: linear-gradient(135deg, #F59F1C, #2EC4B6);
+        .section-title span {
+            background: linear-gradient(135deg, var(--color-orange-primary), var(--color-teal));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        /* ============================================
+        /* ========================================
            ABOUT SECTION
-           ============================================ */
+           ======================================== */
         .about-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: var(--spacing-2xl);
             align-items: center;
-            margin-bottom: 4rem;
         }
 
         .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: #1A1A1A;
-            line-height: 1.2;
+            font-size: 1.75rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-text-dark);
         }
 
         .about-text p {
-            margin-bottom: 1.5rem;
-            color: #4A4A4A;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-text-light);
             line-height: 1.8;
             font-size: 1rem;
         }
 
         .highlight-text {
-            color: #F59F1C;
+            color: var(--color-orange-primary);
             font-weight: 700;
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
         }
 
         .skill-card {
-            background: linear-gradient(135deg, rgba(245, 159, 28, 0.08), rgba(46, 196, 182, 0.08));
-            padding: 1.5rem;
-            border-radius: 12px;
-            border: 2px solid rgba(245, 159, 28, 0.15);
-            transition: all 0.3s ease;
+            background: linear-gradient(135deg, rgba(245, 159, 28, 0.05), rgba(46, 196, 182, 0.05));
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            border: 2px solid rgba(245, 159, 28, 0.1);
+            transition: all var(--duration-normal);
             cursor: pointer;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 203, 105, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .skill-card:hover::before {
+            left: 100%;
         }
 
         .skill-card:hover {
-            border-color: #F59F1C;
-            transform: translateY(-5px);
-            background: linear-gradient(135deg, rgba(245, 159, 28, 0.15), rgba(46, 196, 182, 0.15));
+            border-color: var(--color-orange-primary);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(245, 159, 28, 0.15);
         }
 
         .skill-card h4 {
-            color: #F59F1C;
-            margin-bottom: 0.5rem;
+            color: var(--color-orange-primary);
+            margin-bottom: var(--spacing-xs);
             font-size: 1.1rem;
         }
 
         .skill-card p {
             font-size: 0.95rem;
-            color: #4A4A4A;
+            color: var(--color-text-light);
             margin: 0;
         }
 
@@ -431,129 +427,176 @@
         }
 
         .visual-box {
-            width: 280px;
-            height: 280px;
-            background: linear-gradient(135deg, #F59F1C, #FFCB69, #A8E6D8, #2EC4B6);
-            border-radius: 20px;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, var(--color-orange-primary), var(--color-yellow), var(--color-mint), var(--color-teal));
+            border-radius: var(--radius-lg);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 5rem;
-            box-shadow: 0 20px 60px rgba(245, 159, 28, 0.15);
+            animation: visualFloat 4s ease-in-out infinite;
+            box-shadow: 0 30px 60px rgba(245, 159, 28, 0.2);
             position: relative;
         }
 
-        /* ============================================
+        /* ========================================
            STATS SECTION
-           ============================================ */
+           ======================================== */
         .stats-container {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin: 3rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+            margin: var(--spacing-2xl) 0;
         }
 
         .stat-box {
-            background: #FAFAFA;
-            padding: 2rem;
-            border-radius: 12px;
+            background: var(--color-bg-light);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
             text-align: center;
-            transition: all 0.3s ease;
+            transition: all var(--duration-normal);
             border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-orange-primary), var(--color-teal));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.6s ease;
+        }
+
+        .stat-box:hover::before {
+            transform: scaleX(1);
         }
 
         .stat-box:hover {
             transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(245, 159, 28, 0.1);
-            border-color: #A8E6D8;
+            box-shadow: 0 15px 40px rgba(245, 159, 28, 0.15);
         }
 
         .stat-number {
             font-size: 2.5rem;
             font-weight: 900;
-            background: linear-gradient(135deg, #F59F1C, #2EC4B6);
+            background: linear-gradient(135deg, var(--color-orange-primary), var(--color-teal));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 0.5rem;
+            margin-bottom: var(--spacing-xs);
         }
 
         .stat-label {
-            color: #4A4A4A;
+            color: var(--color-text-light);
             font-size: 0.95rem;
             font-weight: 600;
         }
 
-        /* ============================================
-           PROJECTS SECTION
-           ============================================ */
+        /* ========================================
+           PROJECTS GRID
+           ======================================== */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--spacing-xl);
         }
 
         .project-card {
             background: white;
-            border: 2px solid #FAFAFA;
-            border-radius: 16px;
+            border: 2px solid var(--color-bg-light);
+            border-radius: var(--radius-lg);
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: all var(--duration-normal);
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(46, 196, 182, 0.1), transparent);
+            transition: left 0.8s ease;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .project-card:hover::before {
+            left: 100%;
         }
 
         .project-card:hover {
-            border-color: #2EC4B6;
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(46, 196, 182, 0.15);
+            border-color: var(--color-teal);
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(46, 196, 182, 0.2);
         }
 
         .project-image {
             width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, #F59F1C, #FFCB69, #A8E6D8);
+            height: 220px;
+            background: linear-gradient(135deg, var(--color-orange-primary), var(--color-yellow), var(--color-mint));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
-            border-bottom: 1px solid #FAFAFA;
+            font-size: 3.5rem;
+            border-bottom: 2px solid var(--color-bg-light);
             position: relative;
             overflow: hidden;
         }
 
+        .project-image::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
         .project-content {
-            padding: 1.5rem;
+            padding: var(--spacing-lg);
         }
 
         .project-content h3 {
-            color: #1A1A1A;
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
+            color: var(--color-text-dark);
+            margin-bottom: var(--spacing-xs);
+            font-size: 1.25rem;
             font-weight: 700;
         }
 
         .project-meta {
             display: flex;
-            gap: 0.8rem;
-            margin-bottom: 1rem;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
             flex-wrap: wrap;
         }
 
         .project-tag {
             display: inline-block;
             background: linear-gradient(135deg, rgba(245, 159, 28, 0.1), rgba(46, 196, 182, 0.1));
-            color: #F59F1C;
-            padding: 0.4rem 0.8rem;
-            border-radius: 6px;
-            font-size: 0.75rem;
+            color: var(--color-orange-primary);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
             font-weight: 600;
             border: 1px solid rgba(245, 159, 28, 0.2);
         }
 
         .project-description {
-            color: #4A4A4A;
-            margin-bottom: 1rem;
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-md);
             font-size: 0.95rem;
             line-height: 1.6;
         }
@@ -561,22 +604,22 @@
         .project-impact {
             display: flex;
             align-items: center;
-            gap: 0.8rem;
-            padding: 1rem;
-            background: linear-gradient(135deg, rgba(46, 196, 182, 0.1), rgba(168, 230, 216, 0.1));
-            border-left: 3px solid #2EC4B6;
-            border-radius: 6px;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm);
+            background: linear-gradient(135deg, rgba(245, 159, 28, 0.1), rgba(46, 196, 182, 0.05));
+            border-left: 4px solid var(--color-teal);
+            border-radius: var(--radius-sm);
             font-size: 0.9rem;
-            color: #1A1A1A;
+            color: var(--color-text-dark);
             font-weight: 600;
         }
 
-        /* ============================================
-           EXPERIENCE TIMELINE
-           ============================================ */
+        /* ========================================
+           TIMELINE/EXPERIENCE
+           ======================================== */
         .experience-timeline {
             position: relative;
-            padding: 2rem 0;
+            padding: var(--spacing-lg) 0;
             max-width: 900px;
             margin: 0 auto;
         }
@@ -588,46 +631,52 @@
             transform: translateX(-50%);
             width: 3px;
             height: 100%;
-            background: linear-gradient(180deg, #F59F1C, #2EC4B6, transparent);
+            background: linear-gradient(180deg, var(--color-orange-primary), var(--color-teal), transparent);
         }
 
         .experience-item {
-            margin-bottom: 3rem;
+            margin-bottom: var(--spacing-2xl);
             position: relative;
+            opacity: 0;
+            animation: timelineIn 0.6s ease-out forwards;
         }
+
+        .experience-item:nth-child(1) { animation-delay: 0.1s; }
+        .experience-item:nth-child(2) { animation-delay: 0.2s; }
+        .experience-item:nth-child(3) { animation-delay: 0.3s; }
 
         .experience-item:nth-child(odd) {
             text-align: right;
-            padding-right: 52%;
-            padding-left: 2rem;
+            padding-right: 50%;
+            padding-left: var(--spacing-lg);
         }
 
         .experience-item:nth-child(even) {
             text-align: left;
-            padding-left: 52%;
-            padding-right: 2rem;
+            padding-left: 50%;
+            padding-right: var(--spacing-lg);
         }
 
         .experience-dot {
             position: absolute;
             left: 50%;
             top: 0;
-            width: 16px;
-            height: 16px;
-            background: linear-gradient(135deg, #F59F1C, #2EC4B6);
+            width: 18px;
+            height: 18px;
+            background: linear-gradient(135deg, var(--color-orange-primary), var(--color-teal));
             border: 4px solid white;
             border-radius: 50%;
             transform: translateX(-50%);
             z-index: 10;
-            box-shadow: 0 0 0 4px #F59F1C;
+            box-shadow: 0 0 0 4px var(--color-orange-primary);
         }
 
         .experience-content {
-            background: linear-gradient(135deg, #FAFAFA, white);
-            padding: 1.5rem;
-            border-radius: 12px;
-            border: 2px solid #A8E6D8;
-            transition: all 0.3s ease;
+            background: linear-gradient(135deg, var(--color-bg-light), white);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            border: 2px solid var(--color-mint);
+            transition: all var(--duration-normal);
             position: relative;
         }
 
@@ -638,174 +687,207 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(90deg, #F59F1C, #2EC4B6);
-            border-radius: 12px 12px 0 0;
+            background: linear-gradient(90deg, var(--color-orange-primary), var(--color-teal));
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
         }
 
         .experience-content:hover {
-            border-color: #F59F1C;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(245, 159, 28, 0.1);
+            border-color: var(--color-orange-primary);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(245, 159, 28, 0.15);
         }
 
         .experience-content h3 {
-            color: #1A1A1A;
-            margin-bottom: 0.5rem;
+            color: var(--color-text-dark);
+            margin-bottom: var(--spacing-xs);
             font-weight: 700;
         }
 
         .experience-content .meta {
-            font-size: 0.85rem;
-            color: #F59F1C;
-            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+            color: var(--color-orange-primary);
+            margin-bottom: var(--spacing-sm);
             font-weight: 600;
         }
 
         .experience-content p {
             margin: 0;
-            color: #4A4A4A;
+            color: var(--color-text-light);
             font-size: 0.95rem;
         }
 
-        /* ============================================
+        /* ========================================
            BLOG SECTION
-           ============================================ */
+           ======================================== */
         .blog-filter {
             display: flex;
-            gap: 1.2rem;
+            gap: var(--spacing-md);
             justify-content: center;
-            margin-bottom: 3rem;
+            margin-bottom: var(--spacing-2xl);
             flex-wrap: wrap;
         }
 
         .filter-btn {
-            padding: 0.6rem 1.4rem;
-            border: 2px solid #F59F1C;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border: 2px solid var(--color-orange-primary);
             background: transparent;
-            color: #F59F1C;
-            border-radius: 6px;
+            color: var(--color-orange-primary);
+            border-radius: var(--radius-md);
             cursor: pointer;
             font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            transition: all var(--duration-normal);
         }
 
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: #F59F1C;
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--color-orange-primary);
             color: white;
         }
 
         .blog-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: var(--spacing-xl);
         }
 
         .blog-card {
             background: white;
-            border: 2px solid #FAFAFA;
-            border-radius: 12px;
-            padding: 1.5rem;
-            transition: all 0.3s ease;
+            border: 2px solid var(--color-bg-light);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            transition: all var(--duration-normal);
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .blog-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(46, 196, 182, 0.1), transparent);
+            transition: left 0.8s ease;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .blog-card:hover::before {
+            left: 100%;
         }
 
         .blog-card:hover {
-            border-color: #2EC4B6;
+            border-color: var(--color-teal);
             transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(46, 196, 182, 0.15);
+            box-shadow: 0 20px 50px rgba(46, 196, 182, 0.15);
         }
 
         .blog-date {
             font-size: 0.85rem;
-            color: #F59F1C;
+            color: var(--color-orange-primary);
             font-weight: 600;
-            margin-bottom: 0.8rem;
+            margin-bottom: var(--spacing-sm);
         }
 
         .blog-category-tag {
             display: inline-block;
             background: linear-gradient(135deg, rgba(245, 159, 28, 0.1), rgba(46, 196, 182, 0.1));
-            color: #2EC4B6;
-            padding: 0.3rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.7rem;
+            color: var(--color-teal);
+            padding: 0.35rem 0.75rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 1rem;
+            margin-bottom: var(--spacing-md);
             width: fit-content;
             border: 1px solid rgba(46, 196, 182, 0.2);
         }
 
         .blog-card h3 {
-            color: #1A1A1A;
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
+            color: var(--color-text-dark);
+            font-size: 1.35rem;
+            margin-bottom: var(--spacing-md);
             line-height: 1.4;
             flex-grow: 1;
         }
 
         .blog-excerpt {
-            color: #4A4A4A;
+            color: var(--color-text-light);
             font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 1rem;
+            line-height: 1.7;
+            margin-bottom: var(--spacing-lg);
             flex-grow: 1;
         }
 
         .blog-meta {
             display: flex;
-            gap: 1rem;
+            gap: var(--spacing-md);
             align-items: center;
-            color: #4A4A4A;
+            color: var(--color-text-light);
             font-size: 0.85rem;
-            margin-bottom: 1rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 1px solid rgba(26, 26, 26, 0.1);
         }
 
         .blog-read-more {
-            color: #F59F1C;
+            color: var(--color-orange-primary);
             text-decoration: none;
             font-weight: 700;
             font-size: 0.95rem;
-            transition: all 0.3s ease;
+            transition: all var(--duration-fast);
             display: inline-block;
+            cursor: pointer;
         }
 
         .blog-read-more:hover {
-            color: #2EC4B6;
+            color: var(--color-teal);
             transform: translateX(4px);
         }
 
-        /* ============================================
+        .blog-card.hidden {
+            display: none;
+        }
+
+        /* ========================================
            CONTACT SECTION
-           ============================================ */
+           ======================================== */
         .contact-section {
             text-align: center;
-            background: linear-gradient(135deg, #F59F1C, #FFCB69, #A8E6D8, #2EC4B6);
-            border-radius: 16px;
-            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--color-orange-primary), var(--color-yellow), var(--color-mint), var(--color-teal));
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-2xl);
             color: white;
             position: relative;
             overflow: hidden;
         }
 
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+            animation: contactFloat 8s ease-in-out infinite;
+        }
+
         .contact-section h2 {
             font-size: 2rem;
-            margin-bottom: 1rem;
+            margin-bottom: var(--spacing-lg);
             position: relative;
             z-index: 1;
         }
 
         .contact-section p {
             font-size: 1.05rem;
-            margin-bottom: 2rem;
+            margin-bottom: var(--spacing-lg);
             position: relative;
             z-index: 1;
             opacity: 0.95;
@@ -813,10 +895,10 @@
 
         .contact-methods {
             display: flex;
-            gap: 2rem;
+            gap: var(--spacing-lg);
             justify-content: center;
             flex-wrap: wrap;
-            margin-bottom: 2rem;
+            margin-bottom: var(--spacing-lg);
             position: relative;
             z-index: 1;
         }
@@ -824,42 +906,49 @@
         .contact-method {
             display: flex;
             align-items: center;
-            gap: 0.8rem;
-            padding: 1.2rem 1.8rem;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-md) var(--spacing-lg);
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
-            border-radius: 8px;
+            border-radius: var(--radius-md);
             border: 1px solid rgba(255, 255, 255, 0.3);
             text-decoration: none;
             color: white;
-            transition: all 0.3s ease;
+            transition: all var(--duration-normal);
         }
 
         .contact-method:hover {
             background: rgba(255, 255, 255, 0.25);
-            transform: translateY(-3px);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
         .contact-method span {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
         }
 
-        /* ============================================
+        /* ========================================
            FOOTER
-           ============================================ */
+           ======================================== */
         footer {
-            background: #1A1A1A;
-            padding: 3rem 2rem;
+            background: linear-gradient(135deg, var(--color-text-dark), #2a2a2a);
+            padding: var(--spacing-xl) var(--spacing-lg);
             text-align: center;
+            margin-top: var(--spacing-2xl);
             position: relative;
-            z-index: 1;
+            z-index: 10;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .social-links {
             display: flex;
-            gap: 1.5rem;
+            gap: var(--spacing-lg);
             justify-content: center;
-            margin-bottom: 2rem;
+            margin-bottom: var(--spacing-lg);
             list-style: none;
         }
 
@@ -869,17 +958,18 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #F59F1C, #2EC4B6);
+            background: linear-gradient(135deg, var(--color-orange-primary), var(--color-teal));
             border-radius: 50%;
             color: white;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all var(--duration-fast);
             font-weight: 700;
+            font-size: 1.1rem;
         }
 
         .social-links a:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(245, 159, 28, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(245, 159, 28, 0.3);
         }
 
         .footer-text {
@@ -890,491 +980,838 @@
         .footer-divider {
             height: 1px;
             background: rgba(255, 255, 255, 0.1);
-            margin: 2rem 0;
+            margin: var(--spacing-lg) 0;
         }
 
-        /* ============================================
+        /* ========================================
+           ANIMATIONS & UTILITIES
+           ======================================== */
+        .fade-in-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .page-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page-content {
+            flex: 1;
+            padding-top: 60px;
+        }
+
+        .page-hero {
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(245, 159, 28, 0.1), rgba(46, 196, 182, 0.1));
+            text-align: center;
+            padding: var(--spacing-xl) var(--spacing-lg);
+            position: relative;
+            z-index: 10;
+        }
+
+        .page-hero h1 {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-text-dark);
+        }
+
+        .blog-post-header {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--spacing-2xl) var(--spacing-lg);
+            text-align: center;
+        }
+
+        .blog-post-header h1 {
+            font-size: 2.5rem;
+            color: var(--color-text-dark);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .blog-post-meta {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+            align-items: center;
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-lg);
+            flex-wrap: wrap;
+        }
+
+        .blog-post-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--spacing-xl) var(--spacing-lg);
+            color: var(--color-text-dark);
+            line-height: 1.8;
+        }
+
+        .blog-post-content h2 {
+            font-size: 1.75rem;
+            margin: var(--spacing-xl) 0 var(--spacing-md);
+            color: var(--color-text-dark);
+        }
+
+        .blog-post-content h3 {
+            font-size: 1.3rem;
+            margin: var(--spacing-lg) 0 var(--spacing-sm);
+            color: var(--color-text-dark);
+        }
+
+        .blog-post-content p {
+            margin-bottom: var(--spacing-md);
+            text-align: justify;
+        }
+
+        /* ========================================
            RESPONSIVE DESIGN
-           ============================================ */
+           ======================================== */
         @media (max-width: 768px) {
-            nav {
-                padding: 0.8rem 1.5rem;
-            }
-
-            .nav-links {
-                gap: 1rem;
-            }
-
-            .nav-links a,
-            .nav-links button {
-                font-size: 0.8rem;
-            }
-
-            .cta-button {
-                display: none;
-            }
-
-            .hero {
-                padding: 4rem 1.5rem 3rem;
-                margin-top: 50px;
-            }
-
-            .hero-content h1 {
-                font-size: 1.8rem;
-            }
-
-            .hero-content p {
-                font-size: 0.95rem;
-            }
-
-            .hero-actions {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .btn-primary,
-            .btn-secondary {
-                width: 100%;
-                text-align: center;
-            }
-
-            section {
-                padding: 3rem 1.5rem;
-            }
-
-            .about-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .visual-box {
-                width: 200px;
-                height: 200px;
-                font-size: 4rem;
-            }
-
-            .stats-container {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-
-            .stat-number {
-                font-size: 2rem;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section-title {
-                font-size: 2rem;
-                margin-bottom: 2rem;
-            }
-
-            .experience-timeline::before {
-                left: 15px;
-            }
-
-            .experience-item:nth-child(odd),
-            .experience-item:nth-child(even) {
-                text-align: left;
-                padding-left: 50px;
-                padding-right: 0;
-            }
-
-            .experience-dot {
-                left: 0;
-            }
-
-            .blog-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-methods {
-                flex-direction: column;
-            }
-
-            .contact-method {
-                justify-content: center;
-            }
+            nav { padding: var(--spacing-sm) var(--spacing-md); }
+            .nav-links { gap: var(--spacing-md); font-size: 0.85rem; }
+            .cta-button { display: none; }
+            .hero { margin-top: 70px; padding: var(--spacing-lg); }
+            .hero-content h1 { font-size: 2rem; }
+            .hero-content p { font-size: 1rem; }
+            .hero-actions { flex-direction: column; align-items: stretch; }
+            .btn-primary, .btn-secondary { width: 100%; text-align: center; }
+            .about-container { grid-template-columns: 1fr; gap: var(--spacing-lg); }
+            .visual-box { width: 250px; height: 250px; }
+            .experience-timeline::before { left: 15px; }
+            .experience-item:nth-child(odd), .experience-item:nth-child(even) { text-align: left; padding-left: 50px; padding-right: 0; }
+            .experience-dot { left: 0; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .section-title { font-size: 1.75rem; }
+            section { padding: var(--spacing-xl) var(--spacing-md); }
+            .contact-methods { flex-direction: column; align-items: stretch; }
+            .contact-method { justify-content: center; }
+            .particle { display: none; }
+            .page-hero h1 { font-size: 2rem; }
         }
 
         @media (max-width: 480px) {
-            .nav-links a,
-            .nav-links button {
-                font-size: 0.7rem;
-            }
-
-            .hero-content h1 {
-                font-size: 1.3rem;
-            }
-
-            .btn-primary,
-            .btn-secondary {
-                padding: 0.8rem 1.5rem;
-                font-size: 0.9rem;
-            }
-
-            .stats-container {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-            }
-
-            .stat-number {
-                font-size: 1.5rem;
-            }
-
-            .section-title {
-                font-size: 1.5rem;
-            }
-
-            .hero-actions {
-                gap: 1rem;
-            }
+            .nav-links { gap: var(--spacing-sm); }
+            .nav-links a, .nav-links button { font-size: 0.8rem; }
+            .hero-content h1 { font-size: 1.5rem; }
+            .hero-content p { font-size: 0.95rem; }
+            .btn-primary, .btn-secondary { padding: var(--spacing-sm) var(--spacing-md); font-size: 0.9rem; }
+            .stats-container { grid-template-columns: repeat(2, 1fr); gap: var(--spacing-md); }
+            .stat-number { font-size: 1.75rem; }
+            .section-title { font-size: 1.5rem; }
+            .experience-item:nth-child(odd), .experience-item:nth-child(even) { padding-left: 40px; }
         }
     </style>
 </head>
 <body>
-    <div class="particle-background">
-        <div class="particle particle-1"></div>
-        <div class="particle particle-2"></div>
-        <div class="particle particle-3"></div>
-        <div class="particle particle-4"></div>
-        <div class="particle particle-5"></div>
-    </div>
-
-    <nav>
-        <div class="nav-container">
-            <a class="nav-logo" href="#home">Anshul Eskey</a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#blog">Blog</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#resume" class="cta-button">Resume</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>Product Manager & <span class="hero-highlight">Analytics Strategist</span></h1>
-            <p>Chemical Engineering Student at IIT Roorkee</p>
-            <p class="hero-subtext">Building clarity through strategy, depth through learning, and value through precision</p>
-            <div class="hero-actions">
-                <button class="btn-primary">Get Started</button>
-                <a href="#about" class="btn-secondary">Learn More</a>
-            </div>
-        </div>
-        <div class="scroll-indicator">↓</div>
-    </section>
-
-    <section id="about">
-        <h2 class="section-title">About <span class="highlight">Me</span></h2>
-        <div class="about-container">
-            <div class="about-text">
-                <h3>Aspiring Product Manager & Analytics Strategist</h3>
-                <p>I'm a <span class="highlight-text">Chemical Engineering student</span> with a strong inclination toward <span class="highlight-text">structured thinking, analytics, and product management</span>.</p>
-                <p>Rather than chasing virality, I focus on <span class="highlight-text">depth over noise, consistency over burnout</span>, and learning in public.</p>
-                
-                <div class="skills-grid">
-                    <div class="skill-card">
-                        <h4>Analytics</h4>
-                        <p>Data interpretation, user behavior</p>
-                    </div>
-                    <div class="skill-card">
-                        <h4>Product Strategy</h4>
-                        <p>GTM planning, market research</p>
-                    </div>
-                    <div class="skill-card">
-                        <h4>Systems Thinking</h4>
-                        <p>Problem-solving, structured reasoning</p>
-                    </div>
-                    <div class="skill-card">
-                        <h4>Technical Skills</h4>
-                        <p>SQL, Python, Excel, BI tools</p>
-                    </div>
-                </div>
-            </div>
-            <div class="about-visual">
-                <div class="visual-box">📊</div>
-            </div>
-        </div>
-
-        <div class="stats-container">
-            <div class="stat-box">
-                <div class="stat-number">5</div>
-                <div class="stat-label">Analytics Projects</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-number">3</div>
-                <div class="stat-label">Case Studies</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-number">95%</div>
-                <div class="stat-label">Data Accuracy</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-number">8</div>
-                <div class="stat-label">Published Insights</div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects">
-        <h2 class="section-title">Featured <span class="highlight">Projects</span></h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-image">📈</div>
-                <div class="project-content">
-                    <h3>E-Commerce Analytics Framework</h3>
-                    <div class="project-meta">
-                        <span class="project-tag">Analytics</span>
-                        <span class="project-tag">SQL</span>
-                        <span class="project-tag">BI</span>
-                    </div>
-                    <p class="project-description">Designed comprehensive analytics framework for e-commerce platform.</p>
-                    <div class="project-impact">📊 Result: 32% increase in user retention</div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-image">🎯</div>
-                <div class="project-content">
-                    <h3>B2B SaaS Positioning Strategy</h3>
-                    <div class="project-meta">
-                        <span class="project-tag">Strategy</span>
-                        <span class="project-tag">Market Research</span>
-                        <span class="project-tag">GTM</span>
-                    </div>
-                    <p class="project-description">Conducted competitive analysis for go-to-market strategy.</p>
-                    <div class="project-impact">💰 Result: $2.5M ARR projection</div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-image">👥</div>
-                <div class="project-content">
-                    <h3>Consumer Behavior Research</h3>
-                    <div class="project-meta">
-                        <span class="project-tag">Research</span>
-                        <span class="project-tag">UX</span>
-                        <span class="project-tag">Insights</span>
-                    </div>
-                    <p class="project-description">Led mixed-methods research for product recommendations.</p>
-                    <div class="project-impact">✓ Result: 15 validated hypotheses</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="experience">
-        <h2 class="section-title">Experience <span class="highlight">Journey</span></h2>
-        <div class="experience-timeline">
-            <div class="experience-item">
-                <div class="experience-dot"></div>
-                <div class="experience-content">
-                    <h3>Manager</h3>
-                    <div class="meta">Current • Career Development Cell, IIT Roorkee</div>
-                    <p>Managing Research and Analytics vertical. Driving structured analysis and data-driven initiatives.</p>
-                </div>
-            </div>
-
-            <div class="experience-item">
-                <div class="experience-dot"></div>
-                <div class="experience-content">
-                    <h3>Department Representative</h3>
-                    <div class="meta">Current • Career Development Cell</div>
-                    <p>Connecting CDC with Chemical Engineering Department for seamless information flow.</p>
-                </div>
-            </div>
-
-            <div class="experience-item">
-                <div class="experience-dot"></div>
-                <div class="experience-content">
-                    <h3>Active Projects</h3>
-                    <div class="meta">Ongoing • Multiple Initiatives</div>
-                    <p>CRD Project, Consulting Analytics, Data Analytics dashboards with Tableau.</p>
-                </div>
-            </div>
-
-            <div class="experience-item">
-                <div class="experience-dot"></div>
-                <div class="experience-content">
-                    <h3>Competitive Athlete</h3>
-                    <div class="meta">2024 - Present • Weightlifting Team</div>
-                    <p>Demonstrates discipline, consistency, and competitive mindset through athletic achievements.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="blog">
-        <h2 class="section-title">Train of <span class="highlight">Thought</span></h2>
-        <p style="text-align: center; color: #4A4A4A; font-size: 1.05rem; margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto;">Essays on learning, discipline, product thinking, and personal growth.</p>
-        
-        <div class="blog-filter">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="learning">Learning</button>
-            <button class="filter-btn" data-filter="product">Product</button>
-            <button class="filter-btn" data-filter="personal">Personal</button>
-            <button class="filter-btn" data-filter="analysis">Analysis</button>
-        </div>
-
-        <div class="blog-grid">
-            <article class="blog-card" data-category="learning">
-                <div class="blog-date">Dec 21, 2025</div>
-                <div class="blog-category-tag">learning</div>
-                <h3>The Art of Structured Reading: Building a Personal Knowledge System</h3>
-                <p class="blog-excerpt">How to read research papers and books intentionally. A framework for extracting signal from noise.</p>
-                <div class="blog-meta">
-                    <span>8 min read</span>
-                    <span>•</span>
-                    <span>learning</span>
-                </div>
-                <a href="#" class="blog-read-more">Read Article →</a>
-            </article>
-
-            <article class="blog-card" data-category="product">
-                <div class="blog-date">Dec 18, 2025</div>
-                <div class="blog-category-tag">product</div>
-                <h3>Why Most Analytics Dashboards Fail: A Framework for Clarity</h3>
-                <p class="blog-excerpt">Dashboards are tools for clarity. Yet most are designed for vanity rather than driving action.</p>
-                <div class="blog-meta">
-                    <span>12 min read</span>
-                    <span>•</span>
-                    <span>product</span>
-                </div>
-                <a href="#" class="blog-read-more">Read Article →</a>
-            </article>
-
-            <article class="blog-card" data-category="personal">
-                <div class="blog-date">Dec 15, 2025</div>
-                <div class="blog-category-tag">personal</div>
-                <h3>Discipline as Freedom: What I've Learned from Competitive Weightlifting</h3>
-                <p class="blog-excerpt">Discipline is not restriction—it's the foundation of freedom. After competing at Inter-IIT level.</p>
-                <div class="blog-meta">
-                    <span>10 min read</span>
-                    <span>•</span>
-                    <span>personal</span>
-                </div>
-                <a href="#" class="blog-read-more">Read Article →</a>
-            </article>
-
-            <article class="blog-card" data-category="analysis">
-                <div class="blog-date">Dec 12, 2025</div>
-                <div class="blog-category-tag">analysis</div>
-                <h3>The Consulting Mindset: Breaking Down Complex Problems into Actionable Insights</h3>
-                <p class="blog-excerpt">How consultants think about problems differently. A breakdown of structured problem-solving frameworks.</p>
-                <div class="blog-meta">
-                    <span>11 min read</span>
-                    <span>•</span>
-                    <span>analysis</span>
-                </div>
-                <a href="#" class="blog-read-more">Read Article →</a>
-            </article>
-        </div>
-    </section>
-
-    <section id="contact">
-        <div class="contact-section">
-            <h2>Let's Connect</h2>
-            <p>I'm always interested in discussing product strategy, analytics challenges, and career opportunities.</p>
-            <div class="contact-methods">
-                <a href="mailto:anshuleskey999@gmail.com" class="contact-method">
-                    <span>✉</span>
-                    <div style="text-align: left;">
-                        <strong>Email</strong><br>
-                        <span style="font-size: 0.85rem; opacity: 0.9;">anshuleskey999@gmail.com</span>
-                    </div>
-                </a>
-                <a href="https://www.linkedin.com/in/anshul-eskey-ba0821292/" class="contact-method">
-                    <span>in</span>
-                    <div style="text-align: left;">
-                        <strong>LinkedIn</strong><br>
-                        <span style="font-size: 0.85rem; opacity: 0.9;">View Profile</span>
-                    </div>
-                </a>
-                <a href="https://github.com/AnshulEsk1488" class="contact-method">
-                    <span>gh</span>
-                    <div style="text-align: left;">
-                        <strong>GitHub</strong><br>
-                        <span style="font-size: 0.85rem; opacity: 0.9;">View Work</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div style="max-width: 1200px; margin: 0 auto;">
-            <ul class="social-links">
-                <li><a href="https://www.linkedin.com/in/anshul-eskey-ba0821292/" title="LinkedIn">in</a></li>
-                <li><a href="https://github.com/AnshulEsk1488" title="GitHub">gh</a></li>
-                <li><a href="https://twitter.com/anshuleskey" title="Twitter">tw</a></li>
-                <li><a href="mailto:anshuleskey999@gmail.com" title="Email">✉</a></li>
-            </ul>
-            <div class="footer-divider"></div>
-            <p class="footer-text">&copy; 2025 Anshul Eskey • Chemical Engineering Student at IIT Roorkee • Building clarity, depth, and precision</p>
-        </div>
-    </footer>
+    <!-- Main app container - where all pages render -->
+    <div id="app"></div>
 
     <script>
-        // Blog filtering
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const blogCards = document.querySelectorAll('.blog-card');
+        /* ========================================
+           BLOG POSTS DATA
+           
+           HOW TO ADD NEW BLOG POSTS:
+           1. Copy one of the objects below
+           2. Change: id (unique slug), title, date, category, readTime
+           3. Add excerpt (short preview text)
+           4. Add content (HTML string with your blog post)
+           5. Make sure category matches one of: learning, product, personal, analysis
+           
+           EXAMPLE:
+           {
+               id: 'my-new-post',
+               title: 'My New Blog Post Title',
+               date: 'Dec 25, 2025',
+               category: 'learning',
+               readTime: 8,
+               excerpt: 'Short summary of your post...',
+               content: `<h2>Main Section</h2><p>Your content here...</p>`
+           }
+           ======================================== */
+        const blogPosts = [
+            {
+                id: 'structured-reading',
+                title: 'The Art of Structured Reading: Building a Personal Knowledge System',
+                date: 'Dec 21, 2025',
+                category: 'learning',
+                readTime: 8,
+                excerpt: 'How to read research papers and books intentionally. A framework for extracting signal from noise.',
+                content: `<h2>Why Most Reading Fails</h2>
+<p>We live in an age of infinite information but finite attention. Most people read passively, absorbing text without processing it.</p>
+<p>Structured reading is different. It's an active process where you extract signal from noise, organize information intentionally, and build a compounding knowledge base.</p>
+<h2>The Three-Layer Framework</h2>
+<h3>Layer 1: Pre-Reading</h3>
+<p>Ask: Why am I reading this? What do I want? This sets clear intentions.</p>
+<h3>Layer 2: Active Reading</h3>
+<p>Highlight, annotate, and question as you read. Dialogue with the text.</p>
+<h3>Layer 3: Synthesis</h3>
+<p>Write a one-paragraph summary. This forces processing and internalization.</p>`
+            },
+            {
+                id: 'analytics-dashboards',
+                title: 'Why Most Analytics Dashboards Fail: A Framework for Clarity',
+                date: 'Dec 18, 2025',
+                category: 'product',
+                readTime: 12,
+                excerpt: 'Dashboards should drive clarity. Yet most are designed for vanity.',
+                content: `<h2>The Dashboard Paradox</h2>
+<p>Every company has a dashboard. Yet most are useless because they're optimized for looking impressive rather than driving clarity.</p>
+<h2>Common Failures</h2>
+<h3>Too Much Data</h3>
+<p>The human brain processes 3-5 pieces of information at once. Beyond that is noise.</p>
+<h3>Metrics Without Context</h3>
+<p>A metric up 20% is meaningless without targets and benchmarks.</p>
+<h3>No Action Layer</h3>
+<p>Show what happened AND what to do about it.</p>`
+            },
+            {
+                id: 'discipline-freedom',
+                title: 'Discipline as Freedom: What Competitive Weightlifting Taught Me',
+                date: 'Dec 15, 2025',
+                category: 'personal',
+                readTime: 10,
+                excerpt: 'Discipline creates freedom by eliminating decision fatigue.',
+                content: `<h2>The Paradox of Constraints</h2>
+<p>Most think discipline is restriction. The opposite is true. Discipline creates freedom by eliminating decision fatigue.</p>
+<h2>Preparation Removes Fear</h2>
+<p>Consistency ensures when the moment comes, there's no decision to make.</p>
+<h2>Systems Over Motivation</h2>
+<p>One day won't change you. But 100 days will. Trust the process.</p>`
+            }
+        ];
 
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
+        /* ========================================
+           PAGE CONSTANTS & STATE
+           
+           currentPage: tracks which page user is on
+           currentBlogPost: tracks which blog post is open
+           ======================================== */
+        const pages = {
+            home: 'home',
+            projects: 'projects',
+            blog: 'blog',
+            contact: 'contact',
+            blogPost: 'blog-post'
+        };
 
-                const filter = btn.getAttribute('data-filter');
-                blogCards.forEach(card => {
-                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                        card.style.display = 'flex';
-                    } else {
-                        card.style.display = 'none';
+        let currentPage = pages.home;
+        let currentBlogPost = null;
+
+        /* ========================================
+           NAVIGATION FUNCTION
+           
+           Call this when user clicks a nav link
+           ======================================== */
+        function navigateTo(page) {
+            currentPage = page;
+            currentBlogPost = null;
+            renderApp();
+            window.scrollTo(0, 0);
+        }
+
+        function navigateToBlogPost(postId) {
+            currentPage = pages.blogPost;
+            currentBlogPost = postId;
+            renderApp();
+            window.scrollTo(0, 0);
+        }
+
+        /* ========================================
+           HEADER/NAVIGATION RENDER
+           
+           This renders the same header on every page
+           ======================================== */
+        function renderHeader() {
+            return `
+                <div class="particle-background">
+                    <div class="particle particle-1"></div>
+                    <div class="particle particle-2"></div>
+                    <div class="particle particle-3"></div>
+                    <div class="particle particle-4"></div>
+                </div>
+                <nav>
+                    <div class="nav-container">
+                        <a class="nav-logo" onclick="navigateTo('${pages.home}')">Anshul Eskey</a>
+                        <ul class="nav-links">
+                            <li><a onclick="navigateTo('${pages.home}')" class="nav-link ${currentPage === pages.home ? 'active' : ''}">Home</a></li>
+                            <li><a onclick="navigateTo('${pages.projects}')" class="nav-link ${currentPage === pages.projects ? 'active' : ''}">Projects</a></li>
+                            <li><a onclick="navigateTo('${pages.blog}')" class="nav-link ${currentPage === pages.blog ? 'active' : ''}">Blog</a></li>
+                            <li><a onclick="navigateTo('${pages.contact}')" class="nav-link ${currentPage === pages.contact ? 'active' : ''}">Contact</a></li>
+                            <li><button class="cta-button">Resume</button></li>
+                        </ul>
+                    </div>
+                </nav>
+            `;
+        }
+
+        /* ========================================
+           FOOTER RENDER
+           
+           This renders the same footer on every page
+           ======================================== */
+        function renderFooter() {
+            return `
+                <footer>
+                    <div class="footer-content">
+                        <ul class="social-links">
+                            <li><a href="https://linkedin.com/in/anshul-eskey" title="LinkedIn">in</a></li>
+                            <li><a href="https://github.com" title="GitHub">⚙️</a></li>
+                            <li><a href="https://twitter.com" title="Twitter">𝕏</a></li>
+                            <li><a href="mailto:anshul.eskey@gmail.com" title="Email">@</a></li>
+                        </ul>
+                        <div class="footer-divider"></div>
+                        <p class="footer-text">&copy; 2025 Anshul Eskey | IIT Roorkee | Building clarity through strategy and analytics</p>
+                    </div>
+                </footer>
+            `;
+        }
+
+        /* ========================================
+           HOME PAGE
+           ======================================== */
+        function renderHome() {
+            return `
+                ${renderHeader()}
+                <div class="page-container">
+                    <div class="page-content">
+                        <!-- HERO SECTION -->
+                        <section class="hero" id="home">
+                            <div class="hero-content">
+                                <h1>Product Manager & <span class="hero-highlight">Analytics Strategist</span></h1>
+                                <p>Chemical Engineering Student | Data-Driven Problem Solver</p>
+                                <p class="hero-subtext">Building clarity through strategy, depth through learning, and value through precision</p>
+                                <div class="hero-actions">
+                                    <button class="btn-primary" onclick="navigateTo('${pages.contact}')">Let's Connect</button>
+                                    <button class="btn-secondary" onclick="alert('Resume PDF would download here')">Download Resume</button>
+                                </div>
+                            </div>
+                            <div class="scroll-indicator">↓</div>
+                        </section>
+
+                        <!-- ABOUT SECTION -->
+                        <section id="about" class="fade-in-on-scroll">
+                            <h2 class="section-title">About <span>Me</span></h2>
+                            <div class="about-container">
+                                <div class="about-text">
+                                    <h3>Aspiring Product Manager & Analytics Strategist</h3>
+                                    <p>I'm a <span class="highlight-text">Chemical Engineering student at IIT Roorkee</span> with a passion for <span class="highlight-text">structured thinking, analytics, and product management</span>.</p>
+                                    <p>My philosophy: <em>Clarity over noise; depth over virality; serious but human tone.</em></p>
+                                    <div class="skills-grid">
+                                        <div class="skill-card">
+                                            <h4>📊 Analytics</h4>
+                                            <p>Data interpretation, user behavior analysis</p>
+                                        </div>
+                                        <div class="skill-card">
+                                            <h4>🎯 Product Strategy</h4>
+                                            <p>GTM planning, market research, roadmap</p>
+                                        </div>
+                                        <div class="skill-card">
+                                            <h4>💡 Systems Thinking</h4>
+                                            <p>Problem-solving, structured reasoning</p>
+                                        </div>
+                                        <div class="skill-card">
+                                            <h4>🔧 Technical Skills</h4>
+                                            <p>SQL, Python, Excel, BI tools</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="about-visual">
+                                    <div class="visual-box">📈</div>
+                                </div>
+                            </div>
+
+                            <!-- STATS SECTION -->
+                            <div class="stats-container">
+                                <div class="stat-box fade-in-on-scroll">
+                                    <div class="stat-number">5+</div>
+                                    <div class="stat-label">Analytics Projects</div>
+                                </div>
+                                <div class="stat-box fade-in-on-scroll">
+                                    <div class="stat-number">3</div>
+                                    <div class="stat-label">Case Studies</div>
+                                </div>
+                                <div class="stat-box fade-in-on-scroll">
+                                    <div class="stat-number">95%</div>
+                                    <div class="stat-label">Data Accuracy</div>
+                                </div>
+                                <div class="stat-box fade-in-on-scroll">
+                                    <div class="stat-number">8+</div>
+                                    <div class="stat-label">Published Insights</div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- PROJECTS SECTION (HOME PREVIEW) -->
+                        <section id="projects" class="fade-in-on-scroll">
+                            <h2 class="section-title">Featured <span>Projects</span></h2>
+                            <div class="projects-grid">
+                                <div class="project-card fade-in-on-scroll">
+                                    <div class="project-image">📱</div>
+                                    <div class="project-content">
+                                        <h3>E-Commerce Analytics Framework</h3>
+                                        <div class="project-meta">
+                                            <span class="project-tag">Analytics</span>
+                                            <span class="project-tag">SQL</span>
+                                        </div>
+                                        <p class="project-description">Designed comprehensive analytics framework for e-commerce platform. Identified user patterns and optimized conversion funnel.</p>
+                                        <div class="project-impact"><strong>📈 Result:</strong> 32% increase in user retention</div>
+                                    </div>
+                                </div>
+
+                                <div class="project-card fade-in-on-scroll">
+                                    <div class="project-image">🎯</div>
+                                    <div class="project-content">
+                                        <h3>B2B SaaS Positioning Strategy</h3>
+                                        <div class="project-meta">
+                                            <span class="project-tag">Strategy</span>
+                                            <span class="project-tag">GTM</span>
+                                        </div>
+                                        <p class="project-description">Conducted market research and competitive analysis. Developed go-to-market strategy with positioning and messaging.</p>
+                                        <div class="project-impact"><strong>💰 Result:</strong> $2.5M ARR projection</div>
+                                    </div>
+                                </div>
+
+                                <div class="project-card fade-in-on-scroll">
+                                    <div class="project-image">🔍</div>
+                                    <div class="project-content">
+                                        <h3>Consumer Behavior Research</h3>
+                                        <div class="project-meta">
+                                            <span class="project-tag">Research</span>
+                                            <span class="project-tag">UX</span>
+                                        </div>
+                                        <p class="project-description">Led qualitative and quantitative user research. Generated actionable product insights through interviews and surveys.</p>
+                                        <div class="project-impact"><strong>✅ Result:</strong> 15+ validated hypotheses</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- EXPERIENCE SECTION -->
+                        <section id="experience" class="fade-in-on-scroll">
+                            <h2 class="section-title">Experience & <span>Journey</span></h2>
+                            <div class="experience-timeline">
+                                <div class="experience-item">
+                                    <div class="experience-dot"></div>
+                                    <div class="experience-content">
+                                        <h3>Research & Analytics Lead</h3>
+                                        <div class="meta">Current | Career Development Cell, IIT Roorkee</div>
+                                        <p>Managing Research and Analytics vertical. Driving structured analysis and data-driven initiatives.</p>
+                                    </div>
+                                </div>
+
+                                <div class="experience-item">
+                                    <div class="experience-dot"></div>
+                                    <div class="experience-content">
+                                        <h3>Active Projects Portfolio</h3>
+                                        <div class="meta">Ongoing | Multiple Initiatives</div>
+                                        <p>CRD Project, Consulting & Analytics, Data Analytics Dashboards with Tableau.</p>
+                                    </div>
+                                </div>
+
+                                <div class="experience-item">
+                                    <div class="experience-dot"></div>
+                                    <div class="experience-content">
+                                        <h3>Competitive Weightlifter</h3>
+                                        <div class="meta">2024 - Present | IIT Roorkee Weightlifting Team</div>
+                                        <p>Medals at IT BHU and IIT Ropar. Demonstrates discipline, consistency, competitive mindset.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- BLOG SECTION (HOME PREVIEW) -->
+                        <section id="blog" class="fade-in-on-scroll">
+                            <h2 class="section-title">Train of <span>Thought</span></h2>
+                            <p style="text-align: center; color: var(--color-text-light); font-size: 1.05rem; margin-bottom: var(--spacing-2xl);">Essays on learning, product thinking, and personal growth</p>
+                            
+                            <div class="blog-filter">
+                                <button class="filter-btn active" data-filter="all">All</button>
+                                <button class="filter-btn" data-filter="learning">Learning</button>
+                                <button class="filter-btn" data-filter="product">Product</button>
+                                <button class="filter-btn" data-filter="personal">Personal</button>
+                                <button class="filter-btn" data-filter="analysis">Analysis</button>
+                            </div>
+
+                            <div class="blog-grid">
+                                ${blogPosts.map(post => `
+                                    <article class="blog-card fade-in-on-scroll" data-category="${post.category}">
+                                        <div class="blog-date">${post.date}</div>
+                                        <div class="blog-category-tag">${post.category.toUpperCase()}</div>
+                                        <h3>${post.title}</h3>
+                                        <p class="blog-excerpt">${post.excerpt}</p>
+                                        <div class="blog-meta">
+                                            <span>${post.readTime} min read</span>
+                                            <span>•</span>
+                                            <span>${post.category}</span>
+                                        </div>
+                                        <a onclick="navigateToBlogPost('${post.id}')" class="blog-read-more">Read Article →</a>
+                                    </article>
+                                `).join('')}
+                            </div>
+                        </section>
+
+                        <!-- CONTACT SECTION -->
+                        <section id="contact">
+                            <div class="contact-section fade-in-on-scroll">
+                                <h2>Let's Connect</h2>
+                                <p>I'm interested in discussing product strategy, analytics, and career opportunities.</p>
+                                <div class="contact-methods">
+                                    <a href="mailto:anshul.eskey@gmail.com" class="contact-method">
+                                        <span>✉️</span>
+                                        <div>
+                                            <div style="font-size: 0.9rem; font-weight: 600;">Email</div>
+                                            <div style="font-size: 0.8rem; opacity: 0.9;">anshul.eskey@gmail.com</div>
+                                        </div>
+                                    </a>
+                                    <a href="https://linkedin.com/in/anshul-eskey" class="contact-method">
+                                        <span>💼</span>
+                                        <div>
+                                            <div style="font-size: 0.9rem; font-weight: 600;">LinkedIn</div>
+                                            <div style="font-size: 0.8rem; opacity: 0.9;">View Profile</div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <button class="btn-primary" style="margin-top: var(--spacing-lg); background: rgba(255, 255, 255, 0.25); border: 2px solid white;">Schedule a Call</button>
+                            </div>
+                        </section>
+                    </div>
+                    ${renderFooter()}
+                </div>
+            `;
+        }
+
+        /* ========================================
+           PROJECTS PAGE
+           ======================================== */
+        function renderProjects() {
+            return `
+                ${renderHeader()}
+                <div class="page-container">
+                    <div class="page-content">
+                        <div class="page-hero">
+                            <div>
+                                <h1>Featured Projects</h1>
+                                <p style="font-size: 1.2rem; color: var(--color-text-light); margin-top: var(--spacing-md);">Detailed case studies and project breakdowns</p>
+                            </div>
+                        </div>
+
+                        <section style="padding: var(--spacing-2xl) var(--spacing-lg);">
+                            <div class="projects-grid">
+                                <div class="project-card">
+                                    <div class="project-image">📱</div>
+                                    <div class="project-content">
+                                        <h3>E-Commerce Analytics Framework</h3>
+                                        <div class="project-meta">
+                                            <span class="project-tag">Analytics</span>
+                                            <span class="project-tag">SQL</span>
+                                            <span class="project-tag">BI</span>
+                                        </div>
+                                        <p class="project-description">Built comprehensive SQL queries to track user journey and conversion funnels. Identified friction points and recommended optimizations.</p>
+                                        <div style="margin-top: var(--spacing-lg); color: var(--color-text-light); padding: var(--spacing-lg); background: var(--color-bg-light); border-radius: var(--radius-md);">
+                                            <h4 style="margin-bottom: var(--spacing-md); color: var(--color-text-dark);">Problem</h4>
+                                            <p>No real-time visibility into user behavior, resulting in high cart abandonment.</p>
+                                            <h4 style="margin-bottom: var(--spacing-md); margin-top: var(--spacing-md); color: var(--color-text-dark);">Solution</h4>
+                                            <p>Built centralized dashboard with user segmentation and funnel analysis.</p>
+                                            <h4 style="margin-bottom: var(--spacing-md); margin-top: var(--spacing-md); color: var(--color-text-dark);">Impact</h4>
+                                            <p>32% increase in retention, 18% improvement in checkout completion, $450K additional revenue.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="project-card">
+                                    <div class="project-image">🎯</div>
+                                    <div class="project-content">
+                                        <h3>B2B SaaS Positioning Strategy</h3>
+                                        <div class="project-meta">
+                                            <span class="project-tag">Strategy</span>
+                                            <span class="project-tag">Market Research</span>
+                                            <span class="project-tag">GTM</span>
+                                        </div>
+                                        <p class="project-description">Conducted competitive analysis of 15+ competitors. Interviewed 40+ potential customers. Developed positioning and GTM strategy.</p>
+                                        <div style="margin-top: var(--spacing-lg); color: var(--color-text-light); padding: var(--spacing-lg); background: var(--color-bg-light); border-radius: var(--radius-md);">
+                                            <h4 style="margin-bottom: var(--spacing-md); color: var(--color-text-dark);">Problem</h4>
+                                            <p>Unclear market positioning and confused messaging.</p>
+                                            <h4 style="margin-bottom: var(--spacing-md); margin-top: var(--spacing-md); color: var(--color-text-dark);">Solution</h4>
+                                            <p>Segmented market into 5 personas. Identified unique value: 50% faster implementation.</p>
+                                            <h4 style="margin-bottom: var(--spacing-md); margin-top: var(--spacing-md); color: var(--color-text-dark);">Impact</h4>
+                                            <p>$2.5M ARR projection, 3x improvement in conversion, clear product-market fit.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="project-card">
+                                    <div class="project-image">🔍</div>
+                                    <div class="project-content">
+                                        <h3>Consumer Behavior Research Study</h3>
+                                        <div class="project-meta">
+                                            <span class="project-tag">Research</span>
+                                            <span class="project-tag">UX</span>
+                                            <span class="project-tag">Insights</span>
+                                        </div>
+                                        <p class="project-description">Led mixed-methods research: 30 interviews, 500-person survey, behavioral analysis. Synthesized findings into actionable recommendations.</p>
+                                        <div style="margin-top: var(--spacing-lg); color: var(--color-text-light); padding: var(--spacing-lg); background: var(--color-bg-light); border-radius: var(--radius-md);">
+                                            <h4 style="margin-bottom: var(--spacing-md); color: var(--color-text-dark);">Problem</h4>
+                                            <p>Team making feature decisions without understanding user needs.</p>
+                                            <h4 style="margin-bottom: var(--spacing-md); margin-top: var(--spacing-md); color: var(--color-text-dark);">Solution</h4>
+                                            <p>Comprehensive research program with user personas and journey maps. Top 10 pain points identified.</p>
+                                            <h4 style="margin-bottom: var(--spacing-md); margin-top: var(--spacing-md); color: var(--color-text-dark);">Impact</h4>
+                                            <p>15+ validated hypotheses, 85% accuracy in prioritization, 40% reduction in dev cycle.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    ${renderFooter()}
+                </div>
+            `;
+        }
+
+        /* ========================================
+           BLOG LIST PAGE
+           ======================================== */
+        function renderBlog() {
+            return `
+                ${renderHeader()}
+                <div class="page-container">
+                    <div class="page-content">
+                        <div class="page-hero">
+                            <div>
+                                <h1>Train of Thought</h1>
+                                <p style="font-size: 1.2rem; color: var(--color-text-light); margin-top: var(--spacing-md);">Essays on learning, product, and personal growth</p>
+                            </div>
+                        </div>
+
+                        <section style="padding: var(--spacing-2xl) var(--spacing-lg);">
+                            <div class="blog-filter">
+                                <button class="filter-btn active" data-filter="all">All</button>
+                                <button class="filter-btn" data-filter="learning">Learning</button>
+                                <button class="filter-btn" data-filter="product">Product</button>
+                                <button class="filter-btn" data-filter="personal">Personal</button>
+                                <button class="filter-btn" data-filter="analysis">Analysis</button>
+                            </div>
+
+                            <div class="blog-grid">
+                                ${blogPosts.map(post => `
+                                    <article class="blog-card" data-category="${post.category}">
+                                        <div class="blog-date">${post.date}</div>
+                                        <div class="blog-category-tag">${post.category.toUpperCase()}</div>
+                                        <h3>${post.title}</h3>
+                                        <p class="blog-excerpt">${post.excerpt}</p>
+                                        <div class="blog-meta">
+                                            <span>${post.readTime} min read</span>
+                                            <span>•</span>
+                                            <span>${post.category}</span>
+                                        </div>
+                                        <a onclick="navigateToBlogPost('${post.id}')" class="blog-read-more">Read Article →</a>
+                                    </article>
+                                `).join('')}
+                            </div>
+                        </section>
+                    </div>
+                    ${renderFooter()}
+                </div>
+            `;
+        }
+
+        /* ========================================
+           BLOG POST DETAIL PAGE
+           
+           Shows full blog post content when user clicks "Read Article"
+           ======================================== */
+        function renderBlogPost(postId) {
+            const post = blogPosts.find(p => p.id === postId);
+            if (!post) return `${renderHeader()}<section><h1>Post not found</h1></section>${renderFooter()}`;
+
+            return `
+                ${renderHeader()}
+                <div class="page-container">
+                    <div class="page-content">
+                        <article class="blog-post-header">
+                            <div class="blog-category-tag">${post.category.toUpperCase()}</div>
+                            <h1>${post.title}</h1>
+                            <div class="blog-post-meta">
+                                <span>${post.date}</span>
+                                <span>•</span>
+                                <span>${post.readTime} min read</span>
+                            </div>
+                        </article>
+
+                        <article class="blog-post-content">
+                            ${post.content}
+                        </article>
+
+                        <section style="text-align: center; padding: var(--spacing-2xl) var(--spacing-lg); margin-top: var(--spacing-xl); border-top: 1px solid rgba(26, 26, 26, 0.1);">
+                            <p style="margin-bottom: var(--spacing-lg);">Want to read more?</p>
+                            <button class="btn-primary" onclick="navigateTo('${pages.blog}')" style="background: linear-gradient(135deg, var(--color-orange-primary), var(--color-yellow)); border: none; margin-right: var(--spacing-md);">All Essays</button>
+                            <button class="btn-secondary" onclick="navigateTo('${pages.contact}')">Get In Touch</button>
+                        </section>
+                    </div>
+                    ${renderFooter()}
+                </div>
+            `;
+        }
+
+        /* ========================================
+           CONTACT PAGE
+           ======================================== */
+        function renderContact() {
+            return `
+                ${renderHeader()}
+                <div class="page-container">
+                    <div class="page-content">
+                        <div class="page-hero">
+                            <div>
+                                <h1>Let's Connect</h1>
+                                <p style="font-size: 1.2rem; color: var(--color-text-light); margin-top: var(--spacing-md);">I'm interested in discussing product, analytics, and opportunities</p>
+                            </div>
+                        </div>
+
+                        <section style="padding: var(--spacing-2xl) var(--spacing-lg); max-width: 800px; margin: 0 auto;">
+                            <div class="contact-section">
+                                <h2>Get In Touch</h2>
+                                <p>Whether you want to discuss a project, explore collaboration, or chat about product and analytics—I'd love to hear from you.</p>
+                                
+                                <div class="contact-methods">
+                                    <a href="mailto:anshul.eskey@gmail.com" class="contact-method">
+                                        <span>✉️</span>
+                                        <div>
+                                            <div style="font-size: 0.9rem; font-weight: 600;">Email</div>
+                                            <div style="font-size: 0.8rem; opacity: 0.9;">anshul.eskey@gmail.com</div>
+                                        </div>
+                                    </a>
+                                    <a href="https://linkedin.com/in/anshul-eskey" class="contact-method">
+                                        <span>💼</span>
+                                        <div>
+                                            <div style="font-size: 0.9rem; font-weight: 600;">LinkedIn</div>
+                                            <div style="font-size: 0.8rem; opacity: 0.9;">View Profile</div>
+                                        </div>
+                                    </a>
+                                    <a href="https://github.com" class="contact-method">
+                                        <span>💻</span>
+                                        <div>
+                                            <div style="font-size: 0.9rem; font-weight: 600;">GitHub</div>
+                                            <div style="font-size: 0.8rem; opacity: 0.9;">View Work</div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <button class="btn-primary" style="margin-top: var(--spacing-lg); background: rgba(255, 255, 255, 0.25); border: 2px solid white;">Schedule a Call</button>
+                            </div>
+
+                            <div style="margin-top: var(--spacing-2xl); padding: var(--spacing-xl); background: linear-gradient(135deg, var(--color-bg-light), white); border-radius: var(--radius-lg); border: 2px solid var(--color-mint);">
+                                <h3 style="margin-bottom: var(--spacing-md); color: var(--color-text-dark);">Also Find Me On</h3>
+                                <ul style="list-style: none; color: var(--color-text-light);">
+                                    <li style="margin-bottom: var(--spacing-sm);"><strong>Twitter/X:</strong> @anshul_eskey</li>
+                                    <li style="margin-bottom: var(--spacing-sm);"><strong>GitHub:</strong> github.com/anshul-eskey</li>
+                                    <li style="margin-bottom: var(--spacing-sm);"><strong>LinkedIn:</strong> linkedin.com/in/anshul-eskey</li>
+                                </ul>
+                            </div>
+                        </section>
+                    </div>
+                    ${renderFooter()}
+                </div>
+            `;
+        }
+
+        /* ========================================
+           MAIN RENDER FUNCTION
+           
+           This renders the current page based on currentPage state
+           ======================================== */
+        function renderApp() {
+            const app = document.getElementById('app');
+            let content = '';
+            
+            if (currentPage === pages.home) {
+                content = renderHome();
+            } else if (currentPage === pages.projects) {
+                content = renderProjects();
+            } else if (currentPage === pages.blog) {
+                content = renderBlog();
+            } else if (currentPage === pages.contact) {
+                content = renderContact();
+            } else if (currentPage === pages.blogPost && currentBlogPost) {
+                content = renderBlogPost(currentBlogPost);
+            } else {
+                content = renderHome();
+            }
+
+            app.innerHTML = content;
+            attachEventListeners();
+        }
+
+        /* ========================================
+           EVENT LISTENERS
+           
+           Attach scroll animations and blog filters
+           ======================================== */
+        function attachEventListeners() {
+            // Scroll animations
+            const observerOptions = {
+                threshold: 0.15,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
                     }
                 });
-            });
-        });
+            }, observerOptions);
 
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-
-        // Active nav link on scroll
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
+            document.querySelectorAll('.fade-in-on-scroll').forEach(el => {
+                observer.observe(el);
             });
 
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').slice(1) === current) {
-                    link.classList.add('active');
-                }
+            // Blog filter
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const blogCards = document.querySelectorAll('.blog-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    const filter = btn.getAttribute('data-filter');
+
+                    blogCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
             });
-        });
+
+            // Parallax effect on particles
+            document.addEventListener('mousemove', (e) => {
+                const particles = document.querySelectorAll('.particle');
+                const x = e.clientX / window.innerWidth;
+                const y = e.clientY / window.innerHeight;
+
+                particles.forEach((particle, index) => {
+                    const speed = (index + 1) * 10;
+                    particle.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+                });
+            });
+        }
+
+        // Initialize app
+        renderApp();
     </script>
 </body>
 </html>
